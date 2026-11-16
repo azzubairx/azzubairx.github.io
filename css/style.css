@@ -462,6 +462,16 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
     align-items: stretch;
 }
 
+/* بطاقة كفاءة عريضة: تملأ بقية الصف عند وجود عدد فردي من البطاقات */
+.term-card--wide {
+    grid-column: span 2;
+}
+@media (max-width: 687px) {
+    .term-card--wide {
+        grid-column: auto;
+    }
+}
+
 /* تحسين شكل بطاقة الكفاءات الأساسية وتوسعة المسافات بداخلها */
 .term-card {
     background: var(--bg-glass);
