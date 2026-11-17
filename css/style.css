@@ -285,6 +285,15 @@ section:not(:last-of-type)::after { content: ''; position: absolute; bottom: 0; 
 
 .about-cta { text-align: center; padding: 4rem 2rem; background: var(--bg-glass); border-radius: 32px; border: 1px solid var(--border-glass); margin: 2rem auto; max-width: 800px; }
 
+/* شريط الأدوات (Tools banner) */
+.tools-banner { display: flex; align-items: center; gap: 1.5rem; padding: 1.5rem 2rem; background: var(--bg-glass); border: 1px solid var(--border-glass); border-radius: 24px; box-shadow: var(--shadow-glass); flex-wrap: wrap; }
+.tools-banner-icon { width: 56px; height: 56px; flex: 0 0 56px; border-radius: 16px; display: grid; place-items: center; background: var(--primary-glass); color: var(--primary); font-size: 1.45rem; }
+.tools-banner-text { flex: 1 1 320px; min-width: 0; }
+.tools-banner-text h3 { font-size: 1.3rem; color: var(--text-main); margin-bottom: 0.25rem; }
+.tools-banner-text p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin: 0; }
+.tools-banner .btn { white-space: nowrap; }
+@media (max-width: 640px) { .tools-banner { padding: 1.25rem; gap: 1rem; } .tools-banner .btn { width: 100%; justify-content: center; } }
+
 /* ── 12. الشارات النفسية (UX Psychology Badges) ── */
 @keyframes pulse-green { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
 .authority-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--primary-glass); color: var(--primary); padding: 6px 16px; border-radius: 50px; font-weight: bold; font-size: 0.95rem; margin-bottom: 1.5rem; border: 1px solid var(--border-primary); }
@@ -698,4 +707,8 @@ span.flatpickr-weekday {
 [dir="ltr"] #deadline {
     padding-left: 20px !important; 
     padding-right: 40px !important;
+}
+
+@media (min-width: 769px) and (max-width: 980px) {
+  .nav-links a { font-size: 1rem; padding: 8px 12px; }
 }
