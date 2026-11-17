@@ -630,7 +630,7 @@ span.flatpickr-weekday {
 /* جعل العناوين أكثر أناقة بخط DM Sans */
 [dir="ltr"] h1, [dir="ltr"] h2, [dir="ltr"] h3, [dir="ltr"] h4 {
     font-family: 'DM Sans', sans-serif !important;
-    letter-spacing: -0.5px; /* تقارب بسيط للأحرف يعطي طابعاً احترافياً جداً مع هذا الخط */
+    letter-spacing: -0.5px; /* تقارب بسيط للأحرف يعطي طابعًا احترافيًا جدًا مع هذا الخط */
 }
 
 /* تخصيص خط الاسم في الصفحة الرئيسية الإنجليزية */
@@ -638,7 +638,7 @@ span.flatpickr-weekday {
     font-family: 'Eagle', cursive, sans-serif !important;
     font-weight: normal !important; /* الخطوط المميزة تبدو أفضل بدون التضخيم الافتراضي */
     letter-spacing: 1px !important; /* إلغاء التقارب الذي وضعناه لخط DM Sans */
-    font-size: clamp(2.5rem, 5vw, 4rem) !important; /* تكبير الخط قليلاً ليكون بارزاً كالتوقيع */
+    font-size: clamp(2.5rem, 5vw, 4rem) !important; /* تكبير الخط قليلًا ليكون بارزًا كالتوقيع */
 }
 /* عكس اتجاه التايم لاين الزجاجي في صفحة "عني" */
 [dir="ltr"] .modern-timeline {
