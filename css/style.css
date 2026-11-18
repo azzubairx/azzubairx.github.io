@@ -712,3 +712,12 @@ span.flatpickr-weekday {
 @media (min-width: 769px) and (max-width: 980px) {
   .nav-links a { font-size: 1rem; padding: 8px 12px; }
 }
+
+/* شاشات ضيقة جدًا: تصغير عناصر التنقل لمنع القصّ */
+@media (max-width: 400px) {
+  .logo { font-size: 2.15rem; }
+  .nav-controls { gap: .5rem; }
+  .theme-toggle { width: 38px; height: 38px; font-size: 1rem; }
+  .lang-switch { padding: 5px 10px; font-size: .85rem; }
+  .hamburger { font-size: 1.5rem; }
+}

@@ -43,114 +43,132 @@
     .skip-link { position: fixed; top: -90px; inset-inline-start: 1rem; z-index: 2000; background: var(--primary); color: #fff; padding: .65rem 1.1rem; border-radius: 0 0 12px 12px; font-weight: bold; font-size: .95rem; text-decoration: none; box-shadow: var(--shadow-glass); transition: top .2s ease; }
     .skip-link:focus { top: 0; }
 
-    .tools-hero { padding-bottom: 10px; }
-    .tools-hero h1 { margin-bottom: .6rem; }
-    .tools-kicker { display: inline-flex; align-items: center; gap: .5rem; background: var(--primary-glass); color: var(--primary); border: 1px solid var(--border-primary); border-radius: 50px; padding: .4rem 1rem; font-size: .85rem; font-weight: bold; margin-bottom: 1.1rem; }
-    .tools-hero p { max-width: 720px; }
-    .tools-stats { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem; margin-top: 1.6rem; }
-    .tools-stats span { display: inline-flex; align-items: center; gap: .45rem; background: var(--bg-glass); border: 1px solid var(--border-glass); border-radius: 50px; padding: .4rem .9rem; font-size: .88rem; color: var(--text-muted); box-shadow: var(--shadow-glass); }
-    .tools-stats strong { color: var(--text-main); font-variant-numeric: tabular-nums; }
+    :root { --tools-box-bg: rgba(30, 41, 59, .32); --tools-card-bg: rgba(30, 41, 59, .58); --tools-card-shadow: 0 6px 20px rgba(0, 0, 0, .22); }
+    [data-theme="light"] { --tools-box-bg: rgba(37, 99, 235, .055); --tools-card-bg: rgba(255, 255, 255, .88); --tools-card-shadow: 0 6px 18px rgba(31, 38, 135, .06); }
 
-    /* sticky toolbar */
-    .tools-toolbar-wrap { position: sticky; top: 80px; z-index: 900; padding: .75rem 0; background: var(--bg-main); border-bottom: 1px solid var(--border-glass); }
-    .tools-toolbar { display: flex; flex-direction: column; gap: .85rem; }
-    .tools-bar { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
-    .tools-search { position: relative; flex: 1 1 320px; display: flex; align-items: center; gap: .6rem; background: var(--bg-glass); border: 1px solid var(--border-glass); border-radius: 14px; padding: .65rem .95rem; box-shadow: var(--shadow-glass); }
-    .tools-search:focus-within { border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-glass); }
+    .tools-hero { padding-bottom: 1.4rem; }
+    .tools-hero h1 { margin-bottom: .7rem; letter-spacing: -.01em; }
+    .tools-kicker { display: inline-flex; align-items: center; gap: .5rem; background: var(--primary-glass); color: var(--primary); border: 1px solid var(--border-primary); border-radius: 50px; padding: .4rem 1rem; font-size: .85rem; font-weight: bold; margin-bottom: 1.1rem; }
+    .tools-hero > .container > p { max-width: 760px; line-height: 1.8; }
+    .tools-stats { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem; margin-top: 1.5rem; }
+    .tools-stats span { display: inline-flex; align-items: center; gap: .45rem; background: var(--bg-glass); border: 1px solid var(--border-glass); border-radius: 50px; padding: .38rem .9rem; font-size: .85rem; color: var(--text-muted); box-shadow: var(--shadow-glass); }
+    .tools-stats strong { color: var(--text-main); font-variant-numeric: tabular-nums; }
+    .tools-hint { max-width: 720px; margin: 1.9rem auto 0; font-size: .92rem; line-height: 1.85; color: var(--text-muted); }
+    .tools-hint a { color: var(--primary); text-decoration: underline !important; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+    .tools-hint a:hover { color: var(--primary-hover); }
+
+    /* search */
+    .tools-search { position: relative; display: flex; align-items: center; gap: .65rem; max-width: 620px; margin: 2rem auto 0; background: var(--bg-glass); border: 1px solid var(--border-glass); border-radius: 50px; padding: .8rem 1.25rem; box-shadow: var(--shadow-glass); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); transition: border-color .2s ease, box-shadow .2s ease; }
+    .tools-search:focus-within { border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-glass), var(--shadow-glass); }
     .tools-search > i { color: var(--text-muted); font-size: .95rem; }
     .tools-search input { flex: 1; min-width: 0; background: none; border: 0; outline: 0; color: var(--text-main); font-family: inherit; font-size: 1rem; }
     .tools-search input::placeholder { color: var(--text-muted); }
-    .tools-search kbd { font-family: inherit; font-size: .75rem; color: var(--text-muted); border: 1px solid var(--border-glass); border-bottom-width: 2px; border-radius: 6px; padding: 1px 7px; line-height: 1.4; }
+    .tools-search input::-webkit-search-cancel-button { display: none; }
+    .tools-search kbd { font-family: inherit; font-size: .72rem; color: var(--text-muted); border: 1px solid var(--border-glass); border-bottom-width: 2px; border-radius: 6px; padding: 1px 7px; line-height: 1.5; }
     .tools-search .clear-q { display: none; background: none; border: 0; color: var(--text-muted); cursor: pointer; padding: 2px 4px; font-size: .95rem; border-radius: 6px; }
     .tools-search.has-value .clear-q { display: inline-flex; }
     .tools-search .clear-q:hover { color: var(--text-main); background: var(--primary-glass); }
-    .tools-count { font-size: .9rem; color: var(--text-muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
-    .tools-count strong { color: var(--text-main); }
-    .tools-chips { display: flex; gap: .5rem; overflow-x: auto; padding-bottom: 2px; scrollbar-width: thin; }
-    .chip { flex: 0 0 auto; display: inline-flex; align-items: center; gap: .4rem; background: var(--bg-glass); border: 1px solid var(--border-glass); color: var(--text-muted); border-radius: 50px; padding: .45rem .95rem; font-family: inherit; font-size: .9rem; font-weight: bold; cursor: pointer; transition: color .2s ease, background .2s ease, border-color .2s ease; }
-    .chip:hover { color: var(--text-main); border-color: var(--border-primary); }
-    .chip[aria-pressed="true"] { background: var(--primary); border-color: var(--primary); color: #fff; box-shadow: 0 6px 18px var(--primary-glow); }
-    .chip-n { font-size: .75rem; opacity: .75; font-variant-numeric: tabular-nums; }
+    .tools-count { text-align: center; margin-top: .9rem; font-size: .84rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+    .tools-count[hidden] { display: none; }
 
-    /* main + legend */
-    .tools-main { padding: 2.25rem 0 3rem; }
+    /* filters */
+    .tools-filters { max-width: 940px; margin: 1.9rem auto 0; padding-top: 1.7rem; border-top: 1px solid var(--border-glass); }
+    .filter-block + .filter-block { margin-top: 1.15rem; }
+    .filter-label { display: block; text-align: center; font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: var(--text-muted); font-weight: bold; margin-bottom: .7rem; }
+    .filter-row { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; }
+    .filter-pill { display: inline-flex; align-items: center; gap: .45rem; padding: .45rem 1rem; border-radius: 50px; border: 1px solid var(--border-glass); background: var(--bg-glass); color: var(--text-muted); font-family: inherit; font-size: .9rem; font-weight: bold; line-height: 1.5; cursor: pointer; transition: color .2s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease; }
+    .filter-pill i { font-size: .78rem; opacity: .85; }
+    .filter-pill .pill-n { font-size: .7rem; opacity: .6; font-variant-numeric: tabular-nums; }
+    .filter-pill:hover { color: var(--text-main); border-color: var(--border-primary); }
+    .filter-pill.is-active { background: var(--primary); border-color: var(--primary); color: #fff; box-shadow: 0 8px 22px var(--primary-glow); }
+    .filter-pill.is-active .pill-n { opacity: .8; }
+    .filter-pill:focus-visible, .tool-open:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+    /* sections */
+    .tools-main { padding: 1.2rem 0 3rem; }
     .tools-main::after, .tools-section::after { display: none !important; }
-    .tools-legend-block { margin-top: 3rem; }
-    .tools-legend-title { display: flex; align-items: center; gap: .6rem; font-size: 1.15rem; color: var(--text-main); margin-bottom: .9rem; }
+    .tools-section { padding: 2.8rem 0 0; scroll-margin-top: 100px; }
+    .tools-section-head { text-align: center; margin-bottom: 1.5rem; }
+    .tools-section-head h2 { display: inline-flex; align-items: center; gap: .6rem; font-size: clamp(1.55rem, 3vw, 2rem); color: var(--text-main); line-height: 1.35; }
+    .tools-section-head h2 i { color: var(--primary); font-size: .78em; }
+    .tools-section-head p { max-width: 700px; margin: .55rem auto 0; color: var(--text-muted); font-size: .98rem; line-height: 1.8; }
+    .section-count { display: inline-block; margin-top: .7rem; padding: .12rem .7rem; border-radius: 50px; background: var(--primary-glass); border: 1px solid var(--border-primary); color: var(--text-muted); font-size: .74rem; font-weight: bold; font-variant-numeric: tabular-nums; }
+
+    .tools-box { background: var(--tools-box-bg); border: 1px solid var(--border-glass); border-radius: 26px; padding: clamp(.85rem, 1.8vw, 1.6rem); box-shadow: var(--shadow-glass); }
+    .tools-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+    @media (min-width: 760px) { .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.6rem 2.2rem; } }
+
+    /* cards */
+    .tool-card { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; background: var(--tools-card-bg); border: 1px solid var(--border-glass); border-radius: 20px; padding: 1.4rem 1.35rem 1.5rem; box-shadow: var(--tools-card-shadow); transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+    .tool-card:hover { transform: translateY(-3px); border-color: var(--accent-line, var(--border-primary)); box-shadow: var(--shadow-hover); }
+    .tool-head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: .7rem; width: 100%; }
+    .tool-icon { width: 48px; height: 48px; flex: 0 0 48px; display: grid; place-items: center; border-radius: 14px; background: var(--tile-bg, var(--accent, var(--primary))); color: var(--tile-fg, #fff); border: 1px solid rgba(255, 255, 255, .14); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .18); }
+    .tool-icon svg { width: 26px; height: 26px; fill: currentColor; }
+    .tool-icon i { font-size: 1.25rem; }
+    .tool-icon--brand { border-color: var(--border-glass); }
+    [data-theme="light"] .tool-icon { border-color: rgba(15, 23, 42, .08); }
+    .tool-name { font-size: 1.12rem; font-weight: bold; color: var(--text-main); line-height: 1.35; margin: 0; min-width: 0; unicode-bidi: isolate; }
+    .tool-open { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--accent-line, var(--border-primary)); color: var(--accent, var(--primary)); font-size: .72rem; transition: background .2s ease, color .2s ease, transform .2s ease; }
+    .tool-open:hover { background: var(--accent, var(--primary)); color: #fff; transform: translateY(-1px); }
+
+    .tool-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: .32rem; margin-top: .95rem; }
+    .t-tag { display: inline-flex; align-items: center; gap: .28rem; padding: .12rem .58rem; border-radius: 6px; font-size: .72rem; font-weight: bold; line-height: 1.55; white-space: nowrap; background: rgba(148, 163, 184, .12); color: var(--text-muted); }
+    .t-tag i { font-size: .62rem; }
+    .t-level-1 { background: rgba(16, 185, 129, .12); color: #10B981; }
+    .t-level-2 { background: rgba(245, 158, 11, .12); color: #F59E0B; }
+    .t-level-3 { background: rgba(239, 68, 68, .12); color: #EF4444; }
+    .t-source { background: rgba(139, 92, 246, .12); color: #A78BFA; }
+    .t-affil { background: rgba(245, 158, 11, .14); color: #F59E0B; }
+    [data-theme="light"] .t-level-1 { color: #047857; }
+    [data-theme="light"] .t-level-2, [data-theme="light"] .t-affil { color: #B45309; }
+    [data-theme="light"] .t-level-3 { color: #B91C1C; }
+    [data-theme="light"] .t-source { color: #6D28D9; }
+    .t-plat { white-space: normal; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .66rem; direction: ltr; unicode-bidi: isolate; }
+    .t-engine { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .66rem; direction: ltr; unicode-bidi: isolate; }
+    .tool-rule { width: 3.4rem; height: 3px; border-radius: 99px; background: var(--accent, var(--primary)); opacity: .8; margin: 1rem 0 .9rem; }
+    .tool-desc { font-size: .87rem; line-height: 1.85; color: var(--text-muted); margin: 0; }
+
+    /* legend + disclosure */
+    .tools-legend-block { margin-top: 3.2rem; scroll-margin-top: 100px; }
+    .tools-legend-title { display: flex; align-items: center; justify-content: center; gap: .55rem; font-size: 1.15rem; color: var(--text-main); margin-bottom: 1rem; }
     .tools-legend-title i { color: var(--primary); }
     .tools-legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: .9rem; }
     .legend-item { background: var(--bg-glass); border: 1px solid var(--border-glass); border-radius: 14px; padding: .85rem 1rem; box-shadow: var(--shadow-glass); }
     .legend-item h3 { display: flex; align-items: center; gap: .45rem; font-size: .92rem; color: var(--text-main); margin-bottom: .25rem; }
     .legend-item h3 i { color: var(--primary); font-size: .85rem; }
-    .legend-item p { margin: 0; font-size: .82rem; line-height: 1.6; color: var(--text-muted); }
-
-    /* sections */
-    .tools-section { margin-top: 2.5rem; padding: 0; scroll-margin-top: 190px; }
-    .tools-section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; border-bottom: 2px solid var(--primary-glass); padding-bottom: 10px; margin-bottom: .6rem; }
-    .tools-section-head h2 { font-size: 1.45rem; color: var(--text-main); display: flex; align-items: center; gap: .6rem; margin: 0; }
-    .tools-section-head h2 i { color: var(--primary); font-size: 1.15rem; }
-    .section-count { font-size: .8rem; color: var(--text-muted); background: var(--bg-glass); border: 1px solid var(--border-glass); border-radius: 50px; padding: .15rem .7rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
-    .tools-section > p { color: var(--text-muted); margin-bottom: 1.6rem; max-width: 820px; }
-
-    /* cards */
-    .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; align-items: stretch; }
-    .tool-card { position: relative; display: flex; flex-direction: column; background: var(--bg-glass); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--border-glass); border-radius: 20px; padding: 1.5rem; box-shadow: var(--shadow-glass); transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
-    .tool-card::before { content: ""; position: absolute; inset: 0 0 auto; height: 3px; border-radius: 20px 20px 0 0; background: var(--accent, var(--primary)); opacity: .55; transition: opacity .25s ease; }
-    .tool-card:hover { transform: translateY(-4px); border-color: var(--accent, var(--primary)); box-shadow: var(--shadow-hover); }
-    .tool-card:hover::before { opacity: 1; }
-    .tool-head { display: flex; align-items: center; gap: .9rem; margin-bottom: 1rem; }
-    .tool-icon { width: 54px; height: 54px; flex: 0 0 54px; display: grid; place-items: center; border-radius: 14px; background: var(--bg-main); border: 1px solid var(--border-glass); color: var(--accent, var(--primary)); }
-    [data-theme="light"] .tool-icon { background: rgba(15, 23, 42, .05); border-color: rgba(15, 23, 42, .08); }
-    .tool-icon svg { width: 26px; height: 26px; fill: currentColor; }
-    .tool-icon i { font-size: 1.45rem; }
-    .tool-title { min-width: 0; }
-    .tool-title h3 { font-size: 1.15rem; color: var(--text-main); margin: 0 0 .3rem; line-height: 1.3; }
-    .tool-os { display: flex; align-items: center; flex-wrap: wrap; gap: .45rem; font-size: .82rem; color: var(--text-muted); }
-    .tool-os i { font-size: .95rem; opacity: .85; }
-    .tool-engine { padding-inline-start: .35rem; border-inline-start: 1px solid var(--border-glass); margin-inline-start: .15rem; }
-    .tool-meta { display: inline-flex; align-items: center; gap: .4rem; font-size: .82rem; color: var(--text-muted); }
-    .tool-badges { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .9rem; }
-    .t-badge { display: inline-flex; align-items: center; gap: .3rem; font-size: .76rem; font-weight: bold; padding: .22rem .65rem; border-radius: 50px; border: 1px solid transparent; }
-    .t-badge i { font-size: .7rem; }
-    .b-level-1 { background: rgba(16,185,129,.12); color: #10B981; border-color: rgba(16,185,129,.3); }
-    .b-level-2 { background: rgba(245,158,11,.12); color: #F59E0B; border-color: rgba(245,158,11,.3); }
-    .b-level-3 { background: rgba(239,68,68,.12); color: #EF4444; border-color: rgba(239,68,68,.3); }
-    .b-price { background: var(--bg-main); color: var(--text-muted); border-color: var(--border-glass); }
-    .b-source { background: rgba(139,92,246,.12); color: #8B5CF6; border-color: rgba(139,92,246,.3); }
-    .tool-desc { color: var(--text-muted); font-size: .93rem; line-height: 1.75; margin: 0 0 1.2rem; flex: 1 1 auto; }
-    .tool-foot { display: flex; align-items: center; gap: .6rem; margin-top: auto; }
-    .tool-link { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; flex: 1; padding: .62rem .9rem; border-radius: 12px; border: 1px solid var(--border-glass); color: var(--text-main); font-weight: bold; font-size: .92rem; text-decoration: none; transition: background .2s ease, border-color .2s ease, transform .2s ease; }
-    .tool-link:hover { background: var(--accent, var(--primary)); border-color: var(--accent, var(--primary)); color: #fff; transform: translateY(-1px); }
-    .tool-link.affiliate { border-color: var(--border-primary); color: var(--primary); }
-    .tool-link.affiliate:hover { background: var(--primary); color: #fff; }
-    .tool-note { font-size: .72rem; color: var(--text-muted); white-space: nowrap; }
+    .legend-item p { margin: 0; font-size: .82rem; line-height: 1.65; color: var(--text-muted); }
 
     /* empty state */
-    .tools-empty { display: none; text-align: center; padding: 4rem 1rem; background: var(--bg-glass); border: 1px dashed var(--border-primary); border-radius: 20px; margin-top: 2.5rem; }
+    .tools-empty { display: none; text-align: center; padding: 3.5rem 1rem; background: var(--bg-glass); border: 1px dashed var(--border-primary); border-radius: 20px; margin-top: 2.5rem; }
     .tools-empty.visible { display: block; }
     .tools-empty i { font-size: 2rem; color: var(--primary); margin-bottom: 1rem; }
-    .tools-empty p { color: var(--text-muted); margin-bottom: 1.5rem; }
+    .tools-empty p { color: var(--text-muted); margin-bottom: 1.4rem; }
 
-    .tools-disclosure { display: flex; gap: .8rem; align-items: flex-start; margin-top: 2.5rem; padding: 1.1rem 1.3rem; border: 1px solid var(--border-glass); border-inline-start: 4px solid var(--primary); border-radius: 12px; background: var(--bg-glass); box-shadow: var(--shadow-glass); }
-    .tools-disclosure i { color: var(--primary); margin-top: .2rem; }
-    .tools-disclosure p { margin: 0; color: var(--text-muted); font-size: .9rem; line-height: 1.7; }
-    .is-hidden { display: none !important; }
+    .tools-disclosure { display: flex; gap: .8rem; align-items: flex-start; margin-top: 1.6rem; padding: 1.1rem 1.3rem; border: 1px solid var(--border-glass); border-inline-start: 4px solid var(--primary); border-radius: 12px; background: var(--bg-glass); box-shadow: var(--shadow-glass); }
+    .tools-disclosure i { color: var(--primary); margin-top: .25rem; }
+    .tools-disclosure p { margin: 0; color: var(--text-muted); font-size: .9rem; line-height: 1.75; }
 
-    @media (min-width: 641px) {
-      .tools-chips { flex-wrap: wrap; overflow: visible; }
-    }
+    .tool-card[hidden], .tools-section[hidden], .filter-pill[hidden] { display: none !important; }
+
+    .filter-jump { position: fixed; bottom: 30px; right: 30px; z-index: 999; display: none; align-items: center; gap: .5rem; padding: .7rem 1.15rem; border-radius: 50px; border: 1px solid var(--border-primary); background: var(--bg-glass); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); color: var(--primary); font-family: inherit; font-size: .9rem; font-weight: bold; cursor: pointer; box-shadow: var(--shadow-glass); transition: background .2s ease, color .2s ease, transform .2s ease; }
+    .filter-jump.is-visible { display: inline-flex; }
+    .filter-jump:hover { background: var(--primary); color: #fff; transform: translateY(-2px); }
+    @media (max-width: 640px) { .filter-jump { bottom: 24px; right: 20px; padding: .7rem; } .filter-jump span { display: none; } }
+
     @media (max-width: 640px) {
-      .tools-toolbar-wrap { position: static; }
       .tools-search kbd { display: none; }
-      .tools-chips { -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 26px), transparent); mask-image: linear-gradient(to left, #000 calc(100% - 26px), transparent); padding-inline-end: 26px; }
-      [dir="ltr"] .tools-chips { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 26px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 26px), transparent); }
-      .tools-count { order: 3; width: 100%; }
-      .tools-grid { grid-template-columns: 1fr; }
-      .tools-section { scroll-margin-top: 90px; }
+      .tools-filters { padding-top: 1.4rem; }
+      .filter-row { gap: .4rem; }
+      .filter-pill { font-size: .82rem; padding: .4rem .8rem; }
+      .filter-pill i { display: none; }
+      .tools-section { padding-top: 2.2rem; scroll-margin-top: 90px; }
+      .tools-box { border-radius: 20px; padding: .7rem; }
+      .tool-card { padding: 1.2rem 1rem 1.35rem; }
+      .tool-name { font-size: 1.05rem; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .tool-card, .tool-card::before, .tool-link, .chip { transition: none !important; }
-      .tool-card:hover { transform: none; }
+      .tool-card, .tool-open, .filter-pill, .tools-search { transition: none !important; }
+      .tool-card:hover, .tool-open:hover { transform: none; }
     }
   </style>
 </head>
@@ -178,7 +196,7 @@
 -38 27 -77 47 -102 75 -217 79 -327 l1 -25 -876 -3 -875 -2 2 37 c8 135 33
 225 94 348 177 354 556 545 939 475z m267 -3049 c8 -1 11 -123 11 -436 l0
 -435 -26 0 c-104 -1 -765 -1 -802 -1 l-46 1 0 434 0 435 26 3 c20 2 789 1 837
--1z"/></g></symbol></svg>
+-1z"/></g></symbol><symbol id="brand-mullvad" viewBox="0 0 24 24"><path d="M12 0C5.371 0 0 5.362 0 12c0 6.629 5.381 12 12 12s12-5.371 12-12S18.629 0 12 0zm1.651 3.363c1.908-.02 4.059 1.28 4.701 2.951.381 1 .267 2.086-.057 3.086-.266.819-1.238 2-.876 2.886-.143-.038-3.124-1.048-3.98-1.505-1.344-.838-2.544-1.867-3.448-2.657l-.03-.029-3.047-1.447a1.037 1.037 0 0 1-.104-.058c.419.029 2.085.23 2.828.058-.143-.39-.105-.896.095-1.372.286-.657.83-1.095 1.343-1.095.105 0 .2.019.296.057A3.411 3.411 0 0 1 12.39 3.6a3.49 3.49 0 0 1 1.26-.237zm-2.499.97c-.457 0-.962.42-1.228 1.02-.2.447-.229.933-.086 1.304a.813.813 0 0 0 .41.457.696.696 0 0 0 .285.058c.457 0 .962-.42 1.22-1.02.161-.362.209-.742.152-1.076a.91.91 0 0 0-.467-.676.6.6 0 0 0-.286-.067zm0 .286c.057 0 .115.01.172.038.152.067.266.238.304.467.048.276.01.6-.133.905-.21.485-.619.838-.962.838a.444.444 0 0 1-.162-.029c-.142-.057-.219-.19-.257-.295-.114-.286-.085-.705.076-1.086.21-.495.62-.838.962-.838zM3.01 6.362 2.943 7.79l.133.037.943-1.123-.648 1.104c1.01-.2 2.658-.247 4.42-.114l1.837.895c.915.8 2.124 1.839 3.486 2.686l3.553 1.4.438.638h-.372l.781.943-.714-.114c.01.066.714.876.714.876l-.562.076c.02.067.572.753.572.753l-.42-.03c.03.106.677 1.153.677 1.163 0 .01-.229-.057-.381-.105.543 1.21 1.324 1.448 1.362 1.943-2.667 3.419-9.667 3.952-12.771.124-.067-.314.619-.838 1.057-1.429.21-.286.4-.59.533-.905.19-.58-.21-.533-.476-1.028-.047-.086-.086-.2-.047-.305.057-.19.38-.324.438-.286 1.314.877 3.762.59 5.266-1.142 0 0 .458.114.696.18l-.686-.457-.048-.028c-.028.019-.067.038-.095.057-3.124 2.38-5.152 1.352-5.152 1.352a3.243 3.243 0 0 0-.438-.39c-2.124-1.495-3.639-3.505-4.324-4.81l-.257 1.381.057-1.838-.914 1.276.676-1.371c-.505-.067-.79-.572-.676-.981.094-.426.63-.738 1.096-.527z"/></symbol><symbol id="brand-safari" viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm-.004.953h.006c.063 0 .113.05.113.113v1.842c0 .063-.05.113-.113.113h-.006a.112.112 0 0 1-.113-.113V1.066c0-.063.05-.113.113-.113zm-.941.041c.056.001.104.046.11.104l.077.918a.112.112 0 0 1-.101.12h-.01a.11.11 0 0 1-.12-.1l-.08-.919a.112.112 0 0 1 .102-.12h.01l.012-.003zm1.892 0H12.965a.113.113 0 0 1 .103.121l-.08.92a.111.111 0 0 1-.12.102h-.009a.111.111 0 0 1-.101-.121l.078-.92a.112.112 0 0 1 .111-.102zm-2.838.123a.11.11 0 0 1 .106.092l.32 1.818c.01.06-.03.119-.09.13l-.01.001a.111.111 0 0 1-.128-.09l-.32-1.818a.111.111 0 0 1 .09-.129l.01-.002a.103.103 0 0 1 .022-.002zm3.784.002h.021l.008.002c.061.01.102.07.092.131l-.32 1.814c-.011.062-.07.101-.132.09h-.005a.113.113 0 0 1-.092-.13l.32-1.815a.111.111 0 0 1 .108-.092zm-4.715.203c.048.002.09.035.103.084l.239.893a.112.112 0 0 1-.079.139l-.005.001a.114.114 0 0 1-.14-.08l-.237-.894a.11.11 0 0 1 .078-.137l.006-.002a.123.123 0 0 1 .035-.004zm5.644 0a.11.11 0 0 1 .033.004l.006.002c.06.016.097.079.08.139l-.24.892a.112.112 0 0 1-.137.08l-.005-.002a.114.114 0 0 1-.08-.138l.24-.893a.112.112 0 0 1 .103-.084zm-6.562.285a.11.11 0 0 1 .107.073L9 3.42a.107.107 0 0 1-.064.139l-.012.005a.11.11 0 0 1-.14-.066L8.15 1.76a.11.11 0 0 1 .065-.14l.014-.005a.106.106 0 0 1 .03-.008zm7.469.002c.014 0 .028.001.042.006l.012.006c.057.02.087.082.067.139l-.633 1.738a.11.11 0 0 1-.14.066l-.013-.003A.11.11 0 0 1 15 3.42l.633-1.738a.108.108 0 0 1 .096-.073zm-8.352.366a.112.112 0 0 1 .105.064l.393.838a.112.112 0 0 1-.055.148l-.008.004a.11.11 0 0 1-.146-.054l-.395-.838a.112.112 0 0 1 .055-.149l.008-.004a.11.11 0 0 1 .043-.01zm9.246 0a.11.11 0 0 1 .043.01l.006.003a.11.11 0 0 1 .053.149l-.391.838a.112.112 0 0 1-.148.054l-.006-.002a.112.112 0 0 1-.055-.148l.393-.84a.112.112 0 0 1 .105-.064zm-10.092.44c.04-.002.08.018.102.056l.922 1.597a.113.113 0 0 1-.041.155l-.006.002a.113.113 0 0 1-.154-.041l-.922-1.598a.113.113 0 0 1 .04-.154l.007-.002a.11.11 0 0 1 .052-.016zm10.94.001c.018 0 .035.004.052.014l.004.002a.114.114 0 0 1 .041.156l-.923 1.596a.114.114 0 0 1-.157.04l-.004-.001a.112.112 0 0 1-.04-.155l.925-1.595a.113.113 0 0 1 .102-.057zM5.729 2.93a.11.11 0 0 1 .093.047l.532.753a.114.114 0 0 1-.028.159l-.004.002a.114.114 0 0 1-.158-.028l-.531-.752a.114.114 0 0 1 .027-.158l.006-.002a.113.113 0 0 1 .063-.021zm12.542 0a.11.11 0 0 1 .063.02l.006.003a.112.112 0 0 1 .027.156l-.531.756a.112.112 0 0 1-.156.028l-.006-.004a.112.112 0 0 1-.028-.157l.532-.755a.11.11 0 0 1 .093-.047zm.747.578a.11.11 0 0 1 .08.027l.006.004c.047.04.053.111.013.158L17.932 5.11a.11.11 0 0 1-.157.016l-.005-.006a.11.11 0 0 1-.014-.156l1.185-1.414a.114.114 0 0 1 .077-.041zM4.984 3.51a.11.11 0 0 1 .077.039L6.244 4.96a.112.112 0 0 1-.014.158l-.003.004a.112.112 0 0 1-.159-.014L4.883 3.697a.112.112 0 0 1 .013-.158l.006-.004a.111.111 0 0 1 .082-.025zm-.714.64c.027 0 .055.01.076.032l.658.66a.107.107 0 0 1 0 .152l-.01.01a.107.107 0 0 1-.152 0l-.66-.658a.11.11 0 0 1 0-.155l.01-.01a.111.111 0 0 1 .078-.03zm15.462 0c.028 0 .055.01.077.032l.007.007a.109.109 0 0 1 0 .155l-.658.66a.109.109 0 0 1-.154 0l-.008-.008a.109.109 0 0 1 0-.154l.658-.66a.11.11 0 0 1 .078-.032zm.707.66c.038 0 .071.02.092.075a.112.112 0 0 1-.023.117l-7.606 8.08c-3.084 2.024-6.149 4.04-9.222 6.05-.078.051-.17.082-.211-.028a.112.112 0 0 1 .023-.118l7.594-8.08c3.084-2.023 6.161-4.039 9.234-6.049a.247.247 0 0 1 .12-.046zm-16.824.045a.109.109 0 0 1 .08.026l1.416 1.187a.11.11 0 0 1 .014.157l-.006.005a.11.11 0 0 1-.156.014L3.549 5.057a.109.109 0 0 1-.014-.155l.006-.007a.108.108 0 0 1 .074-.04zm17.336.756c.036 0 .072.017.094.05l.004.003a.114.114 0 0 1-.028.158l-.753.53a.112.112 0 0 1-.157-.028l-.004-.004a.114.114 0 0 1 .028-.158l.754-.53a.113.113 0 0 1 .062-.02zm-17.904.002c.02 0 .042.007.06.02l.76.531c.05.035.06.103.026.152l-.006.01a.109.109 0 0 1-.153.026l-.76-.532a.109.109 0 0 1-.025-.152l.006-.01a.108.108 0 0 1 .092-.045zm-.512.803c.018 0 .036.006.053.016l1.596.923a.111.111 0 0 1 .04.153l-.003.006a.111.111 0 0 1-.153.04L2.473 6.63a.111.111 0 0 1-.041-.152l.004-.006a.11.11 0 0 1 .1-.055zm18.932 0a.11.11 0 0 1 .1.055l.001.004a.113.113 0 0 1-.04.154l-1.596.926a.113.113 0 0 1-.155-.041l-.002-.004a.113.113 0 0 1 .041-.155l1.596-.925a.115.115 0 0 1 .055-.014zm-19.373.846c.014 0 .029.003.043.01l.838.392a.11.11 0 0 1 .052.147l-.004.01a.11.11 0 0 1-.146.052l-.838-.393a.11.11 0 0 1-.053-.146l.004-.01a.109.109 0 0 1 .104-.062zm19.81.002a.11.11 0 0 1 .106.062l.002.008a.11.11 0 0 1-.053.146l-.838.393a.11.11 0 0 1-.146-.053l-.004-.008a.11.11 0 0 1 .052-.146l.838-.393a.11.11 0 0 1 .043-.01zm-20.183.88c.014 0 .028.001.043.006l1.732.631a.112.112 0 0 1 .067.145l-.002.006a.11.11 0 0 1-.143.066l-1.732-.63a.113.113 0 0 1-.069-.145l.002-.004a.115.115 0 0 1 .102-.074zm20.549 0a.113.113 0 0 1 .11.075l.003.004a.115.115 0 0 1-.069.146l-1.732.629a.112.112 0 0 1-.145-.066l-.001-.006a.113.113 0 0 1 .068-.145l1.732-.63a.11.11 0 0 1 .034-.006zm-20.836.909a.11.11 0 0 1 .033.004l.892.24c.06.016.096.077.08.137l-.002.007a.11.11 0 0 1-.136.079l-.895-.239a.113.113 0 0 1-.078-.138l.002-.006a.113.113 0 0 1 .104-.084zm21.13.002a.115.115 0 0 1 .106.084v.004a.112.112 0 0 1-.078.138l-.893.239a.112.112 0 0 1-.138-.079v-.005a.112.112 0 0 1 .078-.14l.892-.237a.11.11 0 0 1 .033-.004zm-21.335.93.023.001 1.814.323c.062.01.101.069.09.13v.006a.111.111 0 0 1-.13.09l-1.815-.322a.113.113 0 0 1-.092-.131l.002-.006a.11.11 0 0 1 .108-.092zm21.519.001h.022c.052.002.1.038.109.092v.006c.01.062-.03.12-.092.13l-1.814.321a.113.113 0 0 1-.131-.092v-.005a.113.113 0 0 1 .092-.131l1.814-.32zm-21.644.944h.011l.922.084a.11.11 0 0 1 .102.119l-.002.01a.11.11 0 0 1-.121.1l-.922-.083a.11.11 0 0 1-.1-.12v-.009a.111.111 0 0 1 .11-.101zm21.779.002h.012c.056 0 .106.043.11.101v.008a.111.111 0 0 1-.1.121l-.923.08a.111.111 0 0 1-.12-.101v-.008a.111.111 0 0 1 .1-.121l.92-.08zm-11.82.73L6.091 16.95c2.02-1.324 4.039-2.646 6.066-3.976l-1.095-1.31zm11.87.219c.063 0 .114.05.114.113v.004c0 .063-.05.113-.113.113l-1.844.004a.113.113 0 0 1-.113-.113v-.004c0-.063.05-.113.113-.113l1.844-.004zm-21.869.002h1.844c.062 0 .112.05.112.111v.008c0 .062-.05.111-.112.111H1.064a.111.111 0 0 1-.11-.111v-.008c0-.061.049-.111.11-.111zm.952.875h.011a.11.11 0 0 1 .11.101v.006a.111.111 0 0 1-.102.121l-.922.08a.11.11 0 0 1-.119-.101l-.002-.006a.111.111 0 0 1 .102-.121l.922-.08zm19.955 0h.011l.922.08a.11.11 0 0 1 .102.119v.008a.112.112 0 0 1-.121.101l-.922-.08a.11.11 0 0 1-.102-.119v-.008a.111.111 0 0 1 .11-.101zm-18.924.705c.053.001.098.04.107.094l.002.004c.011.061-.03.12-.092.13l-1.812.32a.113.113 0 0 1-.13-.091v-.004a.115.115 0 0 1 .09-.133l1.811-.318a.117.117 0 0 1 .024-.002zm17.902 0c.008 0 .016 0 .024.002l1.816.32c.061.011.1.07.09.131v.004a.113.113 0 0 1-.131.092l-1.816-.32a.112.112 0 0 1-.09-.131v-.004a.113.113 0 0 1 .107-.094zM2.332 14.477a.11.11 0 0 1 .104.082l.002.005c.016.06-.02.121-.08.137l-.891.24a.112.112 0 0 1-.137-.08l-.002-.006a.112.112 0 0 1 .08-.136l.89-.239a.112.112 0 0 1 .034-.003zm19.332 0c.011 0 .024 0 .035.003l.893.239c.06.016.096.077.08.136l-.002.006a.111.111 0 0 1-.137.078l-.894-.238a.111.111 0 0 1-.078-.137l.002-.005a.109.109 0 0 1 .101-.082zm-18.213.517a.11.11 0 0 1 .11.074l.002.004a.112.112 0 0 1-.067.145l-1.732.63a.113.113 0 0 1-.145-.068l-.002-.004a.113.113 0 0 1 .069-.144L3.418 15a.11.11 0 0 1 .033-.006zm17.086 0c.015 0 .029 0 .043.006l1.734.63a.111.111 0 0 1 .067.143l-.002.008a.111.111 0 0 1-.143.067l-1.734-.631a.111.111 0 0 1-.066-.143l.002-.008a.111.111 0 0 1 .1-.072zM2.92 16.117a.109.109 0 0 1 .103.063l.004.01a.108.108 0 0 1-.052.144l-.838.393a.11.11 0 0 1-.147-.055l-.004-.008a.11.11 0 0 1 .053-.146l.838-.391a.112.112 0 0 1 .043-.01zm18.158 0a.11.11 0 0 1 .043.01l.838.39c.056.027.08.093.055.149l-.002.004a.112.112 0 0 1-.149.055l-.838-.391a.112.112 0 0 1-.054-.148l.002-.004a.112.112 0 0 1 .105-.065zm-16.957.315c.04-.001.078.02.1.056l.004.004a.11.11 0 0 1-.041.153l-1.596.921a.113.113 0 0 1-.154-.04l-.002-.005a.113.113 0 0 1 .04-.154l1.596-.922a.109.109 0 0 1 .053-.013zm15.756 0c.018 0 .036.004.053.013l1.597.924a.11.11 0 0 1 .041.152l-.002.004a.11.11 0 0 1-.152.041l-1.598-.921a.113.113 0 0 1-.04-.155l.001-.002a.111.111 0 0 1 .1-.056zm.328 1.193a.11.11 0 0 1 .06.021l.758.534c.05.035.061.102.026.152l-.004.008a.111.111 0 0 1-.154.027l-.756-.535a.109.109 0 0 1-.028-.152l.006-.008a.11.11 0 0 1 .092-.047zm-16.412.002c.035 0 .072.016.094.047l.004.008a.109.109 0 0 1-.028.152l-.756.531a.108.108 0 0 1-.152-.025l-.006-.008a.109.109 0 0 1 .028-.152l.755-.534a.107.107 0 0 1 .061-.019zm15.162.102a.112.112 0 0 1 .082.025l1.414 1.187a.11.11 0 0 1 .014.157l-.004.004a.113.113 0 0 1-.158.013L18.89 17.93a.11.11 0 0 1-.014-.157l.004-.005a.108.108 0 0 1 .074-.04zm-12.812 1.12a.11.11 0 0 1 .08.026l.007.008a.11.11 0 0 1 .014.154L5.06 20.451a.11.11 0 0 1-.155.012l-.008-.006a.11.11 0 0 1-.013-.154l1.185-1.414a.11.11 0 0 1 .075-.04zm11.703 0c.032 0 .065.015.088.042l1.181 1.41c.04.048.035.12-.013.16l-.002.002a.114.114 0 0 1-.16-.014l-1.182-1.41a.114.114 0 0 1 .013-.16l.002-.002a.115.115 0 0 1 .073-.027zm-12.928.114c.027 0 .054.01.074.031l.014.012a.107.107 0 0 1 0 .15l-.662.66a.105.105 0 0 1-.149 0l-.011-.011a.105.105 0 0 1 0-.149l.66-.662a.105.105 0 0 1 .074-.031zm14.164 0c.027 0 .053.01.074.031l.66.662a.106.106 0 0 1 0 .15l-.011.012a.106.106 0 0 1-.15-.002l-.66-.66a.106.106 0 0 1 .001-.15l.01-.012a.108.108 0 0 1 .076-.031zm-11.627.797c.018 0 .034.006.05.015l.007.004a.11.11 0 0 1 .04.15l-.921 1.598a.11.11 0 0 1-.15.041l-.008-.004a.111.111 0 0 1-.04-.152l.922-1.596a.113.113 0 0 1 .1-.056zm9.088.002a.11.11 0 0 1 .1.054l.925 1.596a.113.113 0 0 1-.04.154h-.005a.11.11 0 0 1-.152-.039l-.926-1.595a.113.113 0 0 1 .041-.155l.004-.002a.108.108 0 0 1 .053-.013zm-10.285.324c.021 0 .043.008.062.021l.004.002c.051.036.063.106.028.157l-.53.755a.112.112 0 0 1-.156.028l-.004-.002a.112.112 0 0 1-.027-.156l.53-.756a.113.113 0 0 1 .093-.05zm11.484.002c.036 0 .072.015.094.047l.53.756c.035.05.023.12-.028.156l-.004.002a.112.112 0 0 1-.156-.028l-.53-.755a.112.112 0 0 1 .028-.157l.004-.002a.112.112 0 0 1 .062-.02zm-8.863.342a.11.11 0 0 1 .043.006l.012.005c.056.02.084.081.064.137l-.633 1.74a.105.105 0 0 1-.136.063l-.014-.004a.106.106 0 0 1-.065-.137l.633-1.74a.107.107 0 0 1 .096-.07zm6.232 0a.107.107 0 0 1 .106.07l.633 1.738a.107.107 0 0 1-.065.137l-.015.006a.107.107 0 0 1-.137-.065L15 20.578a.107.107 0 0 1 .064-.137l.014-.005a.117.117 0 0 1 .033-.006zm-4.695.41c.008 0 .014 0 .021.002l.006.002c.062.01.101.067.09.129l-.318 1.812a.113.113 0 0 1-.131.092l-.004-.002a.111.111 0 0 1-.092-.129l.32-1.812a.113.113 0 0 1 .108-.094zm3.146.002c.008-.002.015 0 .022 0a.111.111 0 0 1 .107.092l.32 1.812c.012.061-.03.12-.091.131l-.004.002a.113.113 0 0 1-.13-.092l-.321-1.812a.113.113 0 0 1 .092-.131l.005-.002zm-5.79.119a.11.11 0 0 1 .042.01l.004.002a.114.114 0 0 1 .055.15l-.393.834a.112.112 0 0 1-.148.055l-.004-.002a.112.112 0 0 1-.055-.149l.393-.836a.112.112 0 0 1 .105-.064zm8.458 0a.108.108 0 0 1 .104.062l.39.84a.11.11 0 0 1-.052.147l-.008.004a.11.11 0 0 1-.146-.055l-.391-.838a.11.11 0 0 1 .053-.146l.008-.004a.11.11 0 0 1 .042-.01zm-4.236.018H12c.063 0 .115.05.115.113l.002 1.84c0 .063-.05.113-.113.113h-.006a.113.113 0 0 1-.113-.113l-.004-1.838c0-.063.05-.115.113-.115zm-2.592.578c.011 0 .022 0 .034.004l.005.002c.06.016.095.077.079.136l-.24.893a.111.111 0 0 1-.137.078l-.006-.002a.111.111 0 0 1-.078-.137l.24-.89a.113.113 0 0 1 .103-.084zm5.196.002a.11.11 0 0 1 .103.082l.24.89a.11.11 0 0 1-.078.137l-.006.002a.11.11 0 0 1-.136-.078l-.24-.89a.11.11 0 0 1 .078-.138l.005-.002a.112.112 0 0 1 .034-.003zm-3.475.302h.01l.008.002c.061.006.107.06.101.121l-.08.92a.112.112 0 0 1-.121.102h-.008a.11.11 0 0 1-.1-.121l.08-.922a.111.111 0 0 1 .11-.102zm1.736 0h.02a.11.11 0 0 1 .107.102l.08.924a.11.11 0 0 1-.101.119l-.008.002a.11.11 0 0 1-.12-.102l-.08-.924a.112.112 0 0 1 .102-.12z"/></symbol><symbol id="brand-element" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1.314 4.715c3.289 0 5.956 2.66 5.956 5.943 0 .484-.394.877-.879.877s-.879-.393-.879-.877c0-2.313-1.88-4.189-4.198-4.189-.486 0-.879-.393-.879-.877s.392-.877.879-.877zm-5.092 9.504c-.486 0-.879-.394-.879-.877 0-3.283 2.666-5.945 5.956-5.945.485 0 .879.393.879.877s-.394.876-.879.876c-2.319 0-4.198 1.877-4.198 4.191 0 .484-.395.878-.879.878zm7.735 5.067c-3.29 0-5.957-2.662-5.957-5.944 0-.484.394-.878.879-.878s.879.394.879.878c0 2.313 1.88 4.189 4.199 4.189.485 0 .879.393.879.877 0 .486-.394.878-.879.878zm0-2.683c-.485 0-.88-.393-.88-.876 0-.484.395-.878.88-.878 2.318 0 4.199-1.876 4.199-4.19 0-.484.393-.877.879-.877.485 0 .879.393.879.877 0 3.282-2.667 5.944-5.957 5.944z"/></symbol></svg>
 
   <a class="skip-link" href="#toolsList">Skip to the tool list</a>
 
@@ -208,879 +226,533 @@
       <h1>Tools & Recommendations</h1>
       <p>Privacy tools, browsers and software I rely on day to day, grouped by what they do, with platforms, price and licence stated up front.</p>
       <div class="tools-stats">
-        <span><strong>34</strong> tools</span>
+        <span><strong>38</strong> tools</span>
         <span><strong>9</strong> categories</span>
         <span><i class="fas fa-rotate" aria-hidden="true"></i> Updated November 2026</span>
       </div>
+      <p class="tools-hint">These are tools I actually use, not an exhaustive list. Start with the group that matters to you, or <a href="#criteria">read how I choose</a>.</p>
+
+      <div class="tools-search" id="toolsSearchWrap" role="search">
+        <i class="fas fa-magnifying-glass" aria-hidden="true"></i>
+        <input id="toolSearch" type="search" placeholder="Search by tool or category (e.g. VPN, Firefox…)" aria-label="Search tools" aria-controls="toolsList" autocomplete="off" spellcheck="false" />
+        <kbd aria-hidden="true">/</kbd>
+        <button type="button" class="clear-q" id="clearSearch" aria-label="Clear search"><i class="fas fa-xmark" aria-hidden="true"></i></button>
+      </div>
+
+      <div class="tools-filters">
+        <div class="filter-block">
+          <span class="filter-label" id="groupLabel">By group</span>
+          <div class="filter-row" role="group" aria-labelledby="groupLabel">
+            <button type="button" class="filter-pill is-active" data-group-filter="all" aria-pressed="true"><i class="fas fa-layer-group" aria-hidden="true"></i>All<span class="pill-n">38</span></button><button type="button" class="filter-pill" data-group-filter="browsing" aria-pressed="false"><i class="fas fa-compass" aria-hidden="true"></i>Browsing<span class="pill-n">16</span></button><button type="button" class="filter-pill" data-group-filter="connectivity" aria-pressed="false"><i class="fas fa-network-wired" aria-hidden="true"></i>Connectivity<span class="pill-n">6</span></button><button type="button" class="filter-pill" data-group-filter="communication" aria-pressed="false"><i class="fas fa-comments" aria-hidden="true"></i>Communication<span class="pill-n">8</span></button><button type="button" class="filter-pill" data-group-filter="accounts" aria-pressed="false"><i class="fas fa-user-lock" aria-hidden="true"></i>Accounts<span class="pill-n">4</span></button><button type="button" class="filter-pill" data-group-filter="systems" aria-pressed="false"><i class="fas fa-desktop" aria-hidden="true"></i>Systems<span class="pill-n">4</span></button>
+          </div>
+        </div>
+        <div class="filter-block">
+          <span class="filter-label" id="catLabel">By category</span>
+          <div class="filter-row" id="catRow" role="group" aria-labelledby="catLabel">
+            <button type="button" class="filter-pill cat-filter" data-cat-filter="browsers" data-group="browsing" aria-pressed="false">Browsers<span class="pill-n">7</span></button><button type="button" class="filter-pill cat-filter" data-cat-filter="extensions" data-group="browsing" aria-pressed="false">Browser extensions<span class="pill-n">5</span></button><button type="button" class="filter-pill cat-filter" data-cat-filter="search" data-group="browsing" aria-pressed="false">Search engines<span class="pill-n">4</span></button><button type="button" class="filter-pill cat-filter" data-cat-filter="dns" data-group="connectivity" aria-pressed="false">DNS providers<span class="pill-n">3</span></button><button type="button" class="filter-pill cat-filter" data-cat-filter="vpn" data-group="connectivity" aria-pressed="false">VPN providers<span class="pill-n">3</span></button><button type="button" class="filter-pill cat-filter" data-cat-filter="messaging" data-group="communication" aria-pressed="false">Messaging apps<span class="pill-n">4</span></button><button type="button" class="filter-pill cat-filter" data-cat-filter="email" data-group="communication" aria-pressed="false">Email & aliasing<span class="pill-n">4</span></button><button type="button" class="filter-pill cat-filter" data-cat-filter="passwords" data-group="accounts" aria-pressed="false">Passwords & 2FA<span class="pill-n">4</span></button><button type="button" class="filter-pill cat-filter" data-cat-filter="os" data-group="systems" aria-pressed="false">Desktop operating systems<span class="pill-n">4</span></button>
+          </div>
+        </div>
+      </div>
+      <div class="tools-count" id="toolsCount" aria-live="polite">38 tools</div>
     </div>
   </header>
 
-  <div class="tools-toolbar-wrap">
-    <div class="container">
-      <div class="tools-toolbar" role="search">
-        <div class="tools-bar">
-          <div class="tools-search" id="toolsSearchWrap">
-            <i class="fas fa-magnifying-glass" aria-hidden="true"></i>
-            <input id="toolSearch" type="search" placeholder="Search by tool or by what it does…" aria-label="Search tools" aria-controls="toolsList" autocomplete="off" spellcheck="false" />
-            <kbd aria-hidden="true">/</kbd>
-            <button type="button" class="clear-q" id="clearSearch" aria-label="Clear search"><i class="fas fa-xmark" aria-hidden="true"></i></button>
-          </div>
-          <div class="tools-count" id="toolsCount" aria-live="polite"></div>
-        </div>
-        <div class="tools-chips" role="group" aria-label="Filter by category">
-          <button type="button" class="chip" data-cat="all" aria-pressed="true">All<span class="chip-n">34</span></button><button type="button" class="chip" data-cat="browsers" aria-pressed="false" title="Browsers">Browsers<span class="chip-n">5</span></button><button type="button" class="chip" data-cat="extensions" aria-pressed="false" title="Browser extensions">Extensions<span class="chip-n">5</span></button><button type="button" class="chip" data-cat="search" aria-pressed="false" title="Search engines">Search<span class="chip-n">4</span></button><button type="button" class="chip" data-cat="dns" aria-pressed="false" title="DNS providers">DNS<span class="chip-n">3</span></button><button type="button" class="chip" data-cat="vpn" aria-pressed="false" title="VPN providers">VPN<span class="chip-n">2</span></button><button type="button" class="chip" data-cat="messaging" aria-pressed="false" title="Messaging apps">Messaging<span class="chip-n">3</span></button><button type="button" class="chip" data-cat="email" aria-pressed="false" title="Email & aliasing">Aliasing<span class="chip-n">4</span></button><button type="button" class="chip" data-cat="passwords" aria-pressed="false" title="Passwords & 2FA">Passwords<span class="chip-n">4</span></button><button type="button" class="chip" data-cat="os" aria-pressed="false" title="Desktop operating systems">OS<span class="chip-n">4</span></button>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <main>
-    <section class="tools-main">
+    <div class="tools-main">
       <div class="container">
         <div id="toolsList">
 
-      <section class="tools-section" id="browsers" data-cat="browsers">
+      <section class="tools-section" id="browsers" data-cat="browsers" data-group="browsing">
         <div class="tools-section-head">
           <h2><i class="fas fa-compass" aria-hidden="true"></i>Browsers</h2>
-          <span class="section-count">5 tools</span>
+          <p>Your browser sees everything you do online, which makes it one of the most consequential choices you can make.</p>
+          <span class="section-count">7 tools</span>
         </div>
-        <p>Your browser sees everything you do online, which makes it one of the most consequential choices you can make.</p>
-        <div class="tools-grid">
-        <article class="tool-card" data-cat="browsers" data-search="brave يقدم تجربة chromium مألوفة مع الخصوصية والأمان مدمجين افتراضيًا. المميزات الإضافية سهلة التعطيل ولا تؤثر على نقاط قوته. a familiar chromium experience with privacy and security on by default. the built-in extras are easy to turn off and don’t weaken what makes it strong. browser chromium privacy adblock chromium chromium المتصفحات browsers" style="--accent:#FB542B">
+        <div class="tools-box">
+          <div class="tools-grid">
+        <article class="tool-card" data-cat="browsers" data-group="browsing" data-search="Brave Brave يقدم تجربة Chromium مألوفة مع الخصوصية والأمان مدمجين افتراضيًا. المميزات الإضافية سهلة التعطيل ولا تؤثر على نقاط قوته. A familiar Chromium experience with privacy and security on by default. The built-in extras are easy to turn off and don’t weaken what makes it strong. Chromium Chromium Windows macOS Linux Android Free Open source beginner مبتدئ Beginner المتصفحات Browsers">
           <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false"><use href="#brand-brave"></use></svg></div>
-            <div class="tool-title">
-              <h3>Brave</h3>
-              <div class="tool-os" aria-label="Windows, macOS, Linux, Android"><i class="fab fa-windows" title="Windows" aria-hidden="true"></i><i class="fab fa-apple" title="macOS" aria-hidden="true"></i><i class="fab fa-linux" title="Linux" aria-hidden="true"></i><i class="fab fa-android" title="Android" aria-hidden="true"></i><span class="tool-engine">Chromium</span></div>
-            </div>
+            <span class="tool-icon" style="--accent:#FB542B;--accent-line:rgba(251,84,43,.32);--tile-bg:#FB542B;--tile-fg:#FFFFFF"><svg aria-hidden="true" focusable="false"><use href="#brand-brave"></use></svg></span>
+            <h3 class="tool-name">Brave</h3>
+            <a class="tool-open" href="https://brave.com/" target="_blank" rel="noopener noreferrer" aria-label="Brave — Official site" title="Official site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-1"><i class="fas fa-signal" aria-hidden="true"></i>Beginner</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Open source</span>
-          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-1">Beginner</span><span class="t-tag t-price">Free</span><span class="t-tag t-source">Open source</span><span class="t-tag t-plat" dir="ltr">Windows · macOS · Linux · Android</span><span class="t-tag t-engine" dir="ltr">Chromium</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
           <p class="tool-desc">A familiar Chromium experience with privacy and security on by default. The built-in extras are easy to turn off and don’t weaken what makes it strong.</p>
-          <div class="tool-foot">
-            <a class="tool-link" href="https://brave.com/" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
-              <span>Official site</span>
-            </a>
-            
-          </div>
         </article>
-        <article class="tool-card" data-cat="browsers" data-search="helium متصفح خفيف ومفتوح المصدر مبني على chromium، يركز على السرعة وواجهة بلا تشتيت مع احترام خصوصية المستخدم. a lightweight, open-source chromium browser built for speed and a distraction-free interface, with user privacy as a design goal. browser chromium minimal lightweight chromium chromium المتصفحات browsers" style="--accent:#0ACF83">
+        <article class="tool-card" data-cat="browsers" data-group="browsing" data-search="Firefox Firefox أقوى بديل غير Chromium على سطح المكتب. خيار قوي بشكل افتراضي، وبالتصلب (Hardening) يصبح واحدًا من الأفضل عالميًا. The strongest non-Chromium option on desktop. Solid out of the box, and one of the best browsers anywhere once hardened. Gecko Gecko Windows macOS Linux Android Free Open source beginner مبتدئ Beginner المتصفحات Browsers">
           <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false"><use href="#brand-helium"></use></svg></div>
-            <div class="tool-title">
-              <h3>Helium</h3>
-              <div class="tool-os" aria-label="Windows, macOS, Linux"><i class="fab fa-windows" title="Windows" aria-hidden="true"></i><i class="fab fa-apple" title="macOS" aria-hidden="true"></i><i class="fab fa-linux" title="Linux" aria-hidden="true"></i><span class="tool-engine">Chromium</span></div>
-            </div>
+            <span class="tool-icon" style="--accent:#FF7139;--accent-line:rgba(255,113,57,.32);--tile-bg:#FF7139;--tile-fg:#FFFFFF"><svg aria-hidden="true" focusable="false"><use href="#brand-firefoxbrowser"></use></svg></span>
+            <h3 class="tool-name">Firefox</h3>
+            <a class="tool-open" href="https://www.mozilla.org/firefox/" target="_blank" rel="noopener noreferrer" aria-label="Firefox — Official site" title="Official site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-2"><i class="fas fa-signal" aria-hidden="true"></i>Intermediate</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Open source</span>
-          </div>
-          <p class="tool-desc">A lightweight, open-source Chromium browser built for speed and a distraction-free interface, with user privacy as a design goal.</p>
-          <div class="tool-foot">
-            <a class="tool-link" href="https://helium.imput.net/" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
-              <span>Official site</span>
-            </a>
-            
-          </div>
-        </article>
-        <article class="tool-card" data-cat="browsers" data-search="firefox أقوى بديل غير chromium على سطح المكتب. خيار قوي بشكل افتراضي، وبالتصلب (hardening) يصبح واحدًا من الأفضل عالميًا. the strongest non-chromium option on desktop. solid out of the box, and one of the best browsers anywhere once hardened. browser gecko mozilla gecko gecko المتصفحات browsers" style="--accent:#FF7139">
-          <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false"><use href="#brand-firefoxbrowser"></use></svg></div>
-            <div class="tool-title">
-              <h3>Firefox</h3>
-              <div class="tool-os" aria-label="Windows, macOS, Linux, Android"><i class="fab fa-windows" title="Windows" aria-hidden="true"></i><i class="fab fa-apple" title="macOS" aria-hidden="true"></i><i class="fab fa-linux" title="Linux" aria-hidden="true"></i><i class="fab fa-android" title="Android" aria-hidden="true"></i><span class="tool-engine">Gecko</span></div>
-            </div>
-          </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-1"><i class="fas fa-signal" aria-hidden="true"></i>Beginner</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Open source</span>
-          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-1">Beginner</span><span class="t-tag t-price">Free</span><span class="t-tag t-source">Open source</span><span class="t-tag t-plat" dir="ltr">Windows · macOS · Linux · Android</span><span class="t-tag t-engine" dir="ltr">Gecko</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
           <p class="tool-desc">The strongest non-Chromium option on desktop. Solid out of the box, and one of the best browsers anywhere once hardened.</p>
-          <div class="tool-foot">
-            <a class="tool-link" href="https://www.mozilla.org/firefox/" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
-              <span>Official site</span>
-            </a>
-            
-          </div>
         </article>
-        <article class="tool-card" data-cat="browsers" data-search="librewolf نسخة مجتمعية من firefox تطبق معظم إعدادات التصلب الموصى بها افتراضيًا، مما يوفر عليك الإعدادات اليدوية المعقدة. a community firefox build that ships most recommended hardening settings by default, so you skip the manual configuration. browser gecko hardened privacy gecko gecko المتصفحات browsers" style="--accent:#00ACFF">
+        <article class="tool-card" data-cat="browsers" data-group="browsing" data-search="Helium Helium متصفح خفيف ومفتوح المصدر مبني على Chromium، يركز على السرعة وواجهة بلا تشتيت مع احترام خصوصية المستخدم. A lightweight, open-source Chromium browser built for speed and a distraction-free interface, with user privacy as a design goal. Chromium Chromium Windows macOS Linux Free Open source intermediate متوسط Intermediate المتصفحات Browsers">
           <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false"><use href="#brand-librewolf"></use></svg></div>
-            <div class="tool-title">
-              <h3>LibreWolf</h3>
-              <div class="tool-os" aria-label="Windows, macOS, Linux"><i class="fab fa-windows" title="Windows" aria-hidden="true"></i><i class="fab fa-apple" title="macOS" aria-hidden="true"></i><i class="fab fa-linux" title="Linux" aria-hidden="true"></i><span class="tool-engine">Gecko</span></div>
-            </div>
+            <span class="tool-icon" style="--accent:#0ACF83;--accent-line:rgba(10,207,131,.32);--tile-bg:#0ACF83;--tile-fg:#0B1121"><svg aria-hidden="true" focusable="false"><use href="#brand-helium"></use></svg></span>
+            <h3 class="tool-name">Helium</h3>
+            <a class="tool-open" href="https://helium.imput.net/" target="_blank" rel="noopener noreferrer" aria-label="Helium — Official site" title="Official site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-2"><i class="fas fa-signal" aria-hidden="true"></i>Intermediate</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Open source</span>
+          <div class="tool-tags"><span class="t-tag t-level t-level-2">Intermediate</span><span class="t-tag t-price">Free</span><span class="t-tag t-source">Open source</span><span class="t-tag t-plat" dir="ltr">Windows · macOS · Linux</span><span class="t-tag t-engine" dir="ltr">Chromium</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
+          <p class="tool-desc">A lightweight, open-source Chromium browser built for speed and a distraction-free interface, with user privacy as a design goal.</p>
+        </article>
+        <article class="tool-card" data-cat="browsers" data-group="browsing" data-search="LibreWolf LibreWolf نسخة مجتمعية من Firefox تطبق معظم إعدادات التصلب الموصى بها افتراضيًا، مما يوفر عليك الإعدادات اليدوية المعقدة. A community Firefox build that ships most recommended hardening settings by default, so you skip the manual configuration. Gecko Gecko Windows macOS Linux Free Open source intermediate متوسط Intermediate المتصفحات Browsers">
+          <div class="tool-head">
+            <span class="tool-icon" style="--accent:#00ACFF;--accent-line:rgba(0,172,255,.32);--tile-bg:#00ACFF;--tile-fg:#0B1121"><svg aria-hidden="true" focusable="false"><use href="#brand-librewolf"></use></svg></span>
+            <h3 class="tool-name">LibreWolf</h3>
+            <a class="tool-open" href="https://librewolf.net/" target="_blank" rel="noopener noreferrer" aria-label="LibreWolf — Official site" title="Official site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-2">Intermediate</span><span class="t-tag t-price">Free</span><span class="t-tag t-source">Open source</span><span class="t-tag t-plat" dir="ltr">Windows · macOS · Linux</span><span class="t-tag t-engine" dir="ltr">Gecko</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
           <p class="tool-desc">A community Firefox build that ships most recommended hardening settings by default, so you skip the manual configuration.</p>
-          <div class="tool-foot">
-            <a class="tool-link" href="https://librewolf.net/" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
-              <span>Official site</span>
-            </a>
-            
-          </div>
         </article>
-        <article class="tool-card" data-cat="browsers" data-search="tor browser يوجّه حركتك عبر شبكة tor، مما يجعله قويًا للخصوصية الكاملة والالتفاف على الرقابة (مع التضحية بسرعة الأداء). routes your traffic through the tor network — strong for full anonymity and censorship circumvention, at the cost of speed. browser tor anonymity censorship gecko gecko gecko المتصفحات browsers" style="--accent:#7D4698">
+        <article class="tool-card" data-cat="browsers" data-group="browsing" data-search="Tor Browser Tor Browser يوجّه حركتك عبر شبكة Tor، مما يجعله قويًا للخصوصية الكاملة والالتفاف على الرقابة (مع التضحية بسرعة الأداء). Routes your traffic through the Tor network — strong for full anonymity and censorship circumvention, at the cost of speed. Gecko Gecko Windows macOS Linux Android Free Open source advanced متقدم Advanced المتصفحات Browsers">
           <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false"><use href="#brand-torbrowser"></use></svg></div>
-            <div class="tool-title">
-              <h3>Tor Browser</h3>
-              <div class="tool-os" aria-label="Windows, macOS, Linux, Android"><i class="fab fa-windows" title="Windows" aria-hidden="true"></i><i class="fab fa-apple" title="macOS" aria-hidden="true"></i><i class="fab fa-linux" title="Linux" aria-hidden="true"></i><i class="fab fa-android" title="Android" aria-hidden="true"></i><span class="tool-engine">Gecko</span></div>
-            </div>
+            <span class="tool-icon" style="--accent:#7D4698;--accent-line:rgba(125,70,152,.32);--tile-bg:#7D4698;--tile-fg:#FFFFFF"><svg aria-hidden="true" focusable="false"><use href="#brand-torbrowser"></use></svg></span>
+            <h3 class="tool-name">Tor Browser</h3>
+            <a class="tool-open" href="https://www.torproject.org/" target="_blank" rel="noopener noreferrer" aria-label="Tor Browser — Official site" title="Official site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-3"><i class="fas fa-signal" aria-hidden="true"></i>Advanced</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Open source</span>
-          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-3">Advanced</span><span class="t-tag t-price">Free</span><span class="t-tag t-source">Open source</span><span class="t-tag t-plat" dir="ltr">Windows · macOS · Linux · Android</span><span class="t-tag t-engine" dir="ltr">Gecko</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
           <p class="tool-desc">Routes your traffic through the Tor network — strong for full anonymity and censorship circumvention, at the cost of speed.</p>
-          <div class="tool-foot">
-            <a class="tool-link" href="https://www.torproject.org/" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
-              <span>Official site</span>
-            </a>
-            
-          </div>
         </article>
+        <article class="tool-card" data-cat="browsers" data-group="browsing" data-search="mullvad browser tor fingerprinting anti fingerprint gecko privacy متصفح بصمة رقمية خصوصية Mullvad Browser Mullvad Browser متصفح طُوّر بالتعاون مع مشروع Tor ليطبّق حماية البصمة الرقمية على تصفحك العادي، دون الاتصال بشبكة Tor. خيار قوي لخصوصية جادة على سطح المكتب، لكنه قد يكسر بعض المواقع. Built with the Tor Project to apply fingerprinting protections to ordinary browsing, without routing through Tor. A strong desktop pick for serious privacy, though it may break some sites. Gecko Windows macOS Linux Free Open source intermediate متوسط Intermediate المتصفحات Browsers">
+          <div class="tool-head">
+            <span class="tool-icon" style="--accent:#294D73;--accent-line:rgba(41,77,115,.32);--tile-bg:#294D73;--tile-fg:#FFFFFF"><svg aria-hidden="true" focusable="false"><use href="#brand-mullvad"></use></svg></span>
+            <h3 class="tool-name">Mullvad Browser</h3>
+            <a class="tool-open" href="https://mullvad.net/en/browser" target="_blank" rel="noopener noreferrer" aria-label="Mullvad Browser — Official site" title="Official site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-2">Intermediate</span><span class="t-tag t-price">Free</span><span class="t-tag t-source">Open source</span><span class="t-tag t-plat" dir="ltr">Windows · macOS · Linux</span><span class="t-tag t-engine" dir="ltr">Gecko</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
+          <p class="tool-desc">Built with the Tor Project to apply fingerprinting protections to ordinary browsing, without routing through Tor. A strong desktop pick for serious privacy, though it may break some sites.</p>
+        </article>
+        <article class="tool-card" data-cat="browsers" data-group="browsing" data-search="safari apple macos ios webkit lockdown mode متصفح آبل وضع القفل Safari Safari الخيار الافتراضي المعقول لمستخدمي آبل، مع أساسيات خصوصية مدمجة ووضع القفل (Lockdown Mode) على iOS. ادمجه مع إضافة حجب قوية لتغطية أفضل. A reasonable default for Apple users, with privacy basics built in and Lockdown Mode on iOS. Pair it with a strong blocker for better coverage. WebKit macOS iOS Free Proprietary beginner مبتدئ Beginner المتصفحات Browsers">
+          <div class="tool-head">
+            <span class="tool-icon" style="--accent:#006CFF;--accent-line:rgba(0,108,255,.32);--tile-bg:#006CFF;--tile-fg:#FFFFFF"><svg aria-hidden="true" focusable="false"><use href="#brand-safari"></use></svg></span>
+            <h3 class="tool-name">Safari</h3>
+            <a class="tool-open" href="https://www.apple.com/safari/" target="_blank" rel="noopener noreferrer" aria-label="Safari — Official site" title="Official site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-1">Beginner</span><span class="t-tag t-price">Free</span><span class="t-tag t-source">Proprietary</span><span class="t-tag t-plat" dir="ltr">macOS · iOS</span><span class="t-tag t-engine" dir="ltr">WebKit</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
+          <p class="tool-desc">A reasonable default for Apple users, with privacy basics built in and Lockdown Mode on iOS. Pair it with a strong blocker for better coverage.</p>
+        </article>
+          </div>
         </div>
       </section>
-      <section class="tools-section" id="extensions" data-cat="extensions">
+      <section class="tools-section" id="extensions" data-cat="extensions" data-group="browsing">
         <div class="tools-section-head">
           <h2><i class="fas fa-puzzle-piece" aria-hidden="true"></i>Browser extensions</h2>
+          <p>Small add-ons that cut tracking noticeably and improve your overall security posture.</p>
           <span class="section-count">5 tools</span>
         </div>
-        <p>Small add-ons that cut tracking noticeably and improve your overall security posture.</p>
-        <div class="tools-grid">
-        <article class="tool-card" data-cat="extensions" data-search="adguard خيار موثوق وسهل لحجب الإعلانات والمتتبعات، ممتاز لمن يريد حجبًا فعالًا بأقل قدر من تعطيل المواقع. a reliable, low-friction way to block ads and trackers — a good fit if you want effective blocking that rarely breaks sites. extension adblock tracker blocker safari chrome firefox chrome · firefox · edge · safari chrome · firefox · edge · safari إضافات المتصفح browser extensions" style="--accent:#68BC71">
+        <div class="tools-box">
+          <div class="tools-grid">
+        <article class="tool-card" data-cat="extensions" data-group="browsing" data-search="AdGuard AdGuard خيار موثوق وسهل لحجب الإعلانات والمتتبعات، ممتاز لمن يريد حجبًا فعالًا بأقل قدر من تعطيل المواقع. A reliable, low-friction way to block ads and trackers — a good fit if you want effective blocking that rarely breaks sites. Chrome · Firefox · Edge · Safari Chrome · Firefox · Edge · Safari Free/paid Open source beginner مبتدئ Beginner إضافات المتصفح Browser extensions">
           <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false"><use href="#brand-adguard"></use></svg></div>
-            <div class="tool-title">
-              <h3>AdGuard</h3>
-              <div class="tool-os"><span class="tool-meta"><i class="fas fa-window-maximize" aria-hidden="true"></i>Chrome · Firefox · Edge · Safari</span></div>
-            </div>
+            <span class="tool-icon" style="--accent:#68BC71;--accent-line:rgba(104,188,113,.32);--tile-bg:#68BC71;--tile-fg:#0B1121"><svg aria-hidden="true" focusable="false"><use href="#brand-adguard"></use></svg></span>
+            <h3 class="tool-name">AdGuard</h3>
+            <a class="tool-open" href="https://adguard.com/" target="_blank" rel="noopener noreferrer" aria-label="AdGuard — Download" title="Download"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-1"><i class="fas fa-signal" aria-hidden="true"></i>Beginner</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free/paid</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Open source</span>
-          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-1">Beginner</span><span class="t-tag t-price">Free/paid</span><span class="t-tag t-source">Open source</span><span class="t-tag t-plat">Chrome · Firefox · Edge · Safari</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
           <p class="tool-desc">A reliable, low-friction way to block ads and trackers — a good fit if you want effective blocking that rarely breaks sites.</p>
-          <div class="tool-foot">
-            <a class="tool-link" href="https://adguard.com/" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-download" aria-hidden="true"></i>
-              <span>Download</span>
-            </a>
-            
-          </div>
         </article>
-        <article class="tool-card" data-cat="extensions" data-search="ghostery حاجب متتبعات وإعلانات مفتوح المصدر بواجهة صديقة للمبتدئين، ويعرض مؤشرات بصرية بسيطة لما يحجبه. an open-source tracker and ad blocker with a beginner-friendly interface and simple visual cues for what it blocks. extension tracker blocker privacy firefox · chrome · edge · safari firefox · chrome · edge · safari إضافات المتصفح browser extensions" style="--accent:#00AEF0">
+        <article class="tool-card" data-cat="extensions" data-group="browsing" data-search="Ghostery Ghostery حاجب متتبعات وإعلانات مفتوح المصدر بواجهة صديقة للمبتدئين، ويعرض مؤشرات بصرية بسيطة لما يحجبه. An open-source tracker and ad blocker with a beginner-friendly interface and simple visual cues for what it blocks. Firefox · Chrome · Edge · Safari Firefox · Chrome · Edge · Safari Free/paid Open source beginner مبتدئ Beginner إضافات المتصفح Browser extensions">
           <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false"><use href="#brand-ghostery"></use></svg></div>
-            <div class="tool-title">
-              <h3>Ghostery</h3>
-              <div class="tool-os"><span class="tool-meta"><i class="fas fa-window-maximize" aria-hidden="true"></i>Firefox · Chrome · Edge · Safari</span></div>
-            </div>
+            <span class="tool-icon" style="--accent:#00AEF0;--accent-line:rgba(0,174,240,.32);--tile-bg:#00AEF0;--tile-fg:#0B1121"><svg aria-hidden="true" focusable="false"><use href="#brand-ghostery"></use></svg></span>
+            <h3 class="tool-name">Ghostery</h3>
+            <a class="tool-open" href="https://www.ghostery.com/" target="_blank" rel="noopener noreferrer" aria-label="Ghostery — Download" title="Download"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-1"><i class="fas fa-signal" aria-hidden="true"></i>Beginner</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free/paid</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Open source</span>
-          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-1">Beginner</span><span class="t-tag t-price">Free/paid</span><span class="t-tag t-source">Open source</span><span class="t-tag t-plat">Firefox · Chrome · Edge · Safari</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
           <p class="tool-desc">An open-source tracker and ad blocker with a beginner-friendly interface and simple visual cues for what it blocks.</p>
-          <div class="tool-foot">
-            <a class="tool-link" href="https://www.ghostery.com/" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-download" aria-hidden="true"></i>
-              <span>Download</span>
-            </a>
-            
-          </div>
         </article>
-        <article class="tool-card" data-cat="extensions" data-search="duckduckgo privacy إضافة مبسطة توفر حماية شاملة من التتبع، وتعرض لك تقييمًا لدرجة خصوصية الموقع الذي تزوره. a stripped-down extension that blocks trackers and shows a privacy grade for the site you’re on. extension tracker privacy grade duckduckgo chrome · firefox · edge · safari chrome · firefox · edge · safari إضافات المتصفح browser extensions" style="--accent:#DE5833">
+        <article class="tool-card" data-cat="extensions" data-group="browsing" data-search="DuckDuckGo Privacy DuckDuckGo Privacy إضافة مبسطة توفر حماية شاملة من التتبع، وتعرض لك تقييمًا لدرجة خصوصية الموقع الذي تزوره. A stripped-down extension that blocks trackers and shows a privacy grade for the site you’re on. Chrome · Firefox · Edge · Safari Chrome · Firefox · Edge · Safari Free Open source beginner مبتدئ Beginner إضافات المتصفح Browser extensions">
           <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false"><use href="#brand-duckduckgo"></use></svg></div>
-            <div class="tool-title">
-              <h3>DuckDuckGo Privacy</h3>
-              <div class="tool-os"><span class="tool-meta"><i class="fas fa-window-maximize" aria-hidden="true"></i>Chrome · Firefox · Edge · Safari</span></div>
-            </div>
+            <span class="tool-icon" style="--accent:#DE5833;--accent-line:rgba(222,88,51,.32);--tile-bg:#DE5833;--tile-fg:#FFFFFF"><svg aria-hidden="true" focusable="false"><use href="#brand-duckduckgo"></use></svg></span>
+            <h3 class="tool-name">DuckDuckGo Privacy</h3>
+            <a class="tool-open" href="https://duckduckgo.com/app" target="_blank" rel="noopener noreferrer" aria-label="DuckDuckGo Privacy — Download" title="Download"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-1"><i class="fas fa-signal" aria-hidden="true"></i>Beginner</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Open source</span>
-          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-1">Beginner</span><span class="t-tag t-price">Free</span><span class="t-tag t-source">Open source</span><span class="t-tag t-plat">Chrome · Firefox · Edge · Safari</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
           <p class="tool-desc">A stripped-down extension that blocks trackers and shows a privacy grade for the site you’re on.</p>
-          <div class="tool-foot">
-            <a class="tool-link" href="https://duckduckgo.com/app" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-download" aria-hidden="true"></i>
-              <span>Download</span>
-            </a>
-            
-          </div>
         </article>
-        <article class="tool-card" data-cat="extensions" data-search="ublock origin أقوى إضافة لحجب الإعلانات والمحتوى الضار. خفيفة جدًا على الموارد وقابلة للتخصيص بدرجة عالية. the strongest ad and malware blocker available. very light on resources and highly customisable. extension adblock ublock content blocker firefox · chrome · edge · opera firefox · chrome · edge · opera إضافات المتصفح browser extensions" style="--accent:#C0392B">
+        <article class="tool-card" data-cat="extensions" data-group="browsing" data-search="uBlock Origin uBlock Origin أقوى إضافة لحجب الإعلانات والمحتوى الضار. خفيفة جدًا على الموارد وقابلة للتخصيص بدرجة عالية. The strongest ad and malware blocker available. Very light on resources and highly customisable. Firefox · Chrome · Edge · Opera Firefox · Chrome · Edge · Opera Free Open source intermediate متوسط Intermediate إضافات المتصفح Browser extensions">
           <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false"><use href="#brand-ublockorigin"></use></svg></div>
-            <div class="tool-title">
-              <h3>uBlock Origin</h3>
-              <div class="tool-os"><span class="tool-meta"><i class="fas fa-window-maximize" aria-hidden="true"></i>Firefox · Chrome · Edge · Opera</span></div>
-            </div>
+            <span class="tool-icon" style="--accent:#C0392B;--accent-line:rgba(192,57,43,.32);--tile-bg:#C0392B;--tile-fg:#FFFFFF"><svg aria-hidden="true" focusable="false"><use href="#brand-ublockorigin"></use></svg></span>
+            <h3 class="tool-name">uBlock Origin</h3>
+            <a class="tool-open" href="https://ublockorigin.com/" target="_blank" rel="noopener noreferrer" aria-label="uBlock Origin — Download" title="Download"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-2"><i class="fas fa-signal" aria-hidden="true"></i>Intermediate</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Open source</span>
-          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-2">Intermediate</span><span class="t-tag t-price">Free</span><span class="t-tag t-source">Open source</span><span class="t-tag t-plat">Firefox · Chrome · Edge · Opera</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
           <p class="tool-desc">The strongest ad and malware blocker available. Very light on resources and highly customisable.</p>
-          <div class="tool-foot">
-            <a class="tool-link" href="https://ublockorigin.com/" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-download" aria-hidden="true"></i>
-              <span>Download</span>
-            </a>
-            
-          </div>
         </article>
-        <article class="tool-card" data-cat="extensions" data-search="ublock origin lite نسخة متوافقة مع قواعد (manifest v3). تحجب أقل من الإصدار الكامل، لكنها تبقى تحسنًا معنويًا كبيرًا. the manifest v3-compatible build. it blocks less than the full version but is still a meaningful improvement over nothing. extension adblock ublock mv3 manifest v3 chrome · edge · safari (mv3) chrome · edge · safari (mv3) إضافات المتصفح browser extensions" style="--accent:#C0392B">
+        <article class="tool-card" data-cat="extensions" data-group="browsing" data-search="uBlock Origin Lite uBlock Origin Lite نسخة متوافقة مع قواعد (Manifest V3). تحجب أقل من الإصدار الكامل، لكنها تبقى تحسنًا معنويًا كبيرًا. The Manifest V3-compatible build. It blocks less than the full version but is still a meaningful improvement over nothing. Chrome · Edge · Safari (MV3) Chrome · Edge · Safari (MV3) Free Open source intermediate متوسط Intermediate إضافات المتصفح Browser extensions">
           <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false"><use href="#brand-ublockorigin"></use></svg></div>
-            <div class="tool-title">
-              <h3>uBlock Origin Lite</h3>
-              <div class="tool-os"><span class="tool-meta"><i class="fas fa-window-maximize" aria-hidden="true"></i>Chrome · Edge · Safari (MV3)</span></div>
-            </div>
+            <span class="tool-icon" style="--accent:#C0392B;--accent-line:rgba(192,57,43,.32);--tile-bg:#C0392B;--tile-fg:#FFFFFF"><svg aria-hidden="true" focusable="false"><use href="#brand-ublockorigin"></use></svg></span>
+            <h3 class="tool-name">uBlock Origin Lite</h3>
+            <a class="tool-open" href="https://github.com/uBlockOrigin/uBlock-issues/wiki/uBlock-Origin-Lite" target="_blank" rel="noopener noreferrer" aria-label="uBlock Origin Lite — Download" title="Download"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-2"><i class="fas fa-signal" aria-hidden="true"></i>Intermediate</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Open source</span>
-          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-2">Intermediate</span><span class="t-tag t-price">Free</span><span class="t-tag t-source">Open source</span><span class="t-tag t-plat">Chrome · Edge · Safari (MV3)</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
           <p class="tool-desc">The Manifest V3-compatible build. It blocks less than the full version but is still a meaningful improvement over nothing.</p>
-          <div class="tool-foot">
-            <a class="tool-link" href="https://github.com/uBlockOrigin/uBlock-issues/wiki/uBlock-Origin-Lite" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-download" aria-hidden="true"></i>
-              <span>Download</span>
-            </a>
-            
-          </div>
         </article>
+          </div>
         </div>
       </section>
-      <section class="tools-section" id="search" data-cat="search">
+      <section class="tools-section" id="search" data-cat="search" data-group="browsing">
         <div class="tools-section-head">
           <h2><i class="fas fa-magnifying-glass" aria-hidden="true"></i>Search engines</h2>
+          <p>A search engine that respects privacy answers your questions without keeping a history of them.</p>
           <span class="section-count">4 tools</span>
         </div>
-        <p>A search engine that respects privacy answers your questions without keeping a history of them.</p>
-        <div class="tools-grid">
-        <article class="tool-card" data-cat="search" data-search="brave search يدير فهرس بحث مستقلًا خاصًا به بدل الاعتماد على google، وهو خيار قوي لتجربة بحث مألوفة بدون تتبع. runs its own independent index instead of leaning on google — a strong option for a familiar search experience without tracking. search engine index brave web · فهرس مستقل web · independent index محركات البحث search engines" style="--accent:#FB542B">
+        <div class="tools-box">
+          <div class="tools-grid">
+        <article class="tool-card" data-cat="search" data-group="browsing" data-search="Brave Search Brave Search يدير فهرس بحث مستقلًا خاصًا به بدل الاعتماد على Google، وهو خيار قوي لتجربة بحث مألوفة بدون تتبع. Runs its own independent index instead of leaning on Google — a strong option for a familiar search experience without tracking. Web · independent index Web · independent index Free/paid Proprietary beginner مبتدئ Beginner محركات البحث Search engines">
           <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false"><use href="#brand-brave"></use></svg></div>
-            <div class="tool-title">
-              <h3>Brave Search</h3>
-              <div class="tool-os"><span class="tool-meta"><i class="fas fa-globe" aria-hidden="true"></i>Web · independent index</span></div>
-            </div>
+            <span class="tool-icon" style="--accent:#FB542B;--accent-line:rgba(251,84,43,.32);--tile-bg:#FB542B;--tile-fg:#FFFFFF"><svg aria-hidden="true" focusable="false"><use href="#brand-brave"></use></svg></span>
+            <h3 class="tool-name">Brave Search</h3>
+            <a class="tool-open" href="https://search.brave.com/" target="_blank" rel="noopener noreferrer" aria-label="Brave Search — Visit site" title="Visit site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-1"><i class="fas fa-signal" aria-hidden="true"></i>Beginner</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free/paid</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Proprietary</span>
-          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-1">Beginner</span><span class="t-tag t-price">Free/paid</span><span class="t-tag t-source">Proprietary</span><span class="t-tag t-plat">Web · independent index</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
           <p class="tool-desc">Runs its own independent index instead of leaning on Google — a strong option for a familiar search experience without tracking.</p>
-          <div class="tool-foot">
-            <a class="tool-link" href="https://search.brave.com/" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
-              <span>Visit site</span>
-            </a>
-            
-          </div>
         </article>
-        <article class="tool-card" data-cat="search" data-search="duckduckgo يجلب النتائج أساسًا من bing دون تمرير هويتك، وهو نقطة دخول سهلة لمن ينتقل من google. pulls results mainly from bing without passing your identity along — an easy entry point for people leaving google. search engine bing privacy web · نتائج مجمّعة web · aggregated results محركات البحث search engines" style="--accent:#DE5833">
+        <article class="tool-card" data-cat="search" data-group="browsing" data-search="DuckDuckGo DuckDuckGo يجلب النتائج أساسًا من Bing دون تمرير هويتك، وهو نقطة دخول سهلة لمن ينتقل من Google. Pulls results mainly from Bing without passing your identity along — an easy entry point for people leaving Google. Web · aggregated results Web · aggregated results Free Proprietary beginner مبتدئ Beginner محركات البحث Search engines">
           <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false"><use href="#brand-duckduckgo"></use></svg></div>
-            <div class="tool-title">
-              <h3>DuckDuckGo</h3>
-              <div class="tool-os"><span class="tool-meta"><i class="fas fa-globe" aria-hidden="true"></i>Web · aggregated results</span></div>
-            </div>
+            <span class="tool-icon" style="--accent:#DE5833;--accent-line:rgba(222,88,51,.32);--tile-bg:#DE5833;--tile-fg:#FFFFFF"><svg aria-hidden="true" focusable="false"><use href="#brand-duckduckgo"></use></svg></span>
+            <h3 class="tool-name">DuckDuckGo</h3>
+            <a class="tool-open" href="https://duckduckgo.com/" target="_blank" rel="noopener noreferrer" aria-label="DuckDuckGo — Visit site" title="Visit site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-1"><i class="fas fa-signal" aria-hidden="true"></i>Beginner</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Proprietary</span>
-          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-1">Beginner</span><span class="t-tag t-price">Free</span><span class="t-tag t-source">Proprietary</span><span class="t-tag t-plat">Web · aggregated results</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
           <p class="tool-desc">Pulls results mainly from Bing without passing your identity along — an easy entry point for people leaving Google.</p>
-          <div class="tool-foot">
-            <a class="tool-link" href="https://duckduckgo.com/" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
-              <span>Visit site</span>
-            </a>
-            
-          </div>
         </article>
-        <article class="tool-card" data-cat="search" data-search="kagi محرك بحث مدفوع بفهرس خاص، بلا إعلانات ولا تتبع. تمويله بالاشتراكات يزيل تضارب المصالح وجمع البيانات. a paid search engine with its own index, no ads and no tracking. subscriptions remove the conflict of interest. search engine paid subscription kagi web · فهرس مستقل web · independent index محركات البحث search engines" style="--accent:#FFB319">
+        <article class="tool-card" data-cat="search" data-group="browsing" data-search="Kagi Kagi محرك بحث مدفوع بفهرس خاص، بلا إعلانات ولا تتبع. تمويله بالاشتراكات يزيل تضارب المصالح وجمع البيانات. A paid search engine with its own index, no ads and no tracking. Subscriptions remove the conflict of interest. Web · independent index Web · independent index Paid Proprietary beginner مبتدئ Beginner محركات البحث Search engines">
           <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false"><use href="#brand-kagi"></use></svg></div>
-            <div class="tool-title">
-              <h3>Kagi</h3>
-              <div class="tool-os"><span class="tool-meta"><i class="fas fa-globe" aria-hidden="true"></i>Web · independent index</span></div>
-            </div>
+            <span class="tool-icon" style="--accent:#FFB319;--accent-line:rgba(255,179,25,.32);--tile-bg:#FFB319;--tile-fg:#0B1121"><svg aria-hidden="true" focusable="false"><use href="#brand-kagi"></use></svg></span>
+            <h3 class="tool-name">Kagi</h3>
+            <a class="tool-open" href="https://kagi.com/" target="_blank" rel="noopener noreferrer" aria-label="Kagi — Visit site" title="Visit site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-1"><i class="fas fa-signal" aria-hidden="true"></i>Beginner</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Paid</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Proprietary</span>
-          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-1">Beginner</span><span class="t-tag t-price">Paid</span><span class="t-tag t-source">Proprietary</span><span class="t-tag t-plat">Web · independent index</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
           <p class="tool-desc">A paid search engine with its own index, no ads and no tracking. Subscriptions remove the conflict of interest.</p>
-          <div class="tool-foot">
-            <a class="tool-link" href="https://kagi.com/" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
-              <span>Visit site</span>
-            </a>
-            
-          </div>
         </article>
-        <article class="tool-card" data-cat="search" data-search="searxng محرك مجمّع مفتوح المصدر يسحب النتائج من عشرات المصادر دون تتبع استعلاماتك، وقابل للاستضافة الذاتية. an open-source metasearch engine that queries dozens of sources without logging your searches. self-hostable. search engine metasearch self hosted web · استضافة ذاتية web · self-hosted محركات البحث search engines" style="--accent:#3050FF">
+        <article class="tool-card" data-cat="search" data-group="browsing" data-search="SearXNG SearXNG محرك مجمّع مفتوح المصدر يسحب النتائج من عشرات المصادر دون تتبع استعلاماتك، وقابل للاستضافة الذاتية. An open-source metasearch engine that queries dozens of sources without logging your searches. Self-hostable. Web · self-hosted Web · self-hosted Free Open source intermediate متوسط Intermediate محركات البحث Search engines">
           <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false"><use href="#brand-searxng"></use></svg></div>
-            <div class="tool-title">
-              <h3>SearXNG</h3>
-              <div class="tool-os"><span class="tool-meta"><i class="fas fa-globe" aria-hidden="true"></i>Web · self-hosted</span></div>
-            </div>
+            <span class="tool-icon" style="--accent:#3050FF;--accent-line:rgba(48,80,255,.32);--tile-bg:#3050FF;--tile-fg:#FFFFFF"><svg aria-hidden="true" focusable="false"><use href="#brand-searxng"></use></svg></span>
+            <h3 class="tool-name">SearXNG</h3>
+            <a class="tool-open" href="https://docs.searxng.org/" target="_blank" rel="noopener noreferrer" aria-label="SearXNG — Visit site" title="Visit site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-2"><i class="fas fa-signal" aria-hidden="true"></i>Intermediate</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Open source</span>
-          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-2">Intermediate</span><span class="t-tag t-price">Free</span><span class="t-tag t-source">Open source</span><span class="t-tag t-plat">Web · self-hosted</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
           <p class="tool-desc">An open-source metasearch engine that queries dozens of sources without logging your searches. Self-hostable.</p>
-          <div class="tool-foot">
-            <a class="tool-link" href="https://docs.searxng.org/" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
-              <span>Visit site</span>
-            </a>
-            
-          </div>
         </article>
+          </div>
         </div>
       </section>
-      <section class="tools-section" id="dns" data-cat="dns">
+      <section class="tools-section" id="dns" data-cat="dns" data-group="connectivity">
         <div class="tools-section-head">
           <h2><i class="fas fa-server" aria-hidden="true"></i>DNS providers</h2>
+          <p>DNS turns every domain you visit into an address. Your default provider logs all of it, and switching is the easiest win available.</p>
           <span class="section-count">3 tools</span>
         </div>
-        <p>DNS turns every domain you visit into an address. Your default provider logs all of it, and switching is the easiest win available.</p>
-        <div class="tools-grid">
-        <article class="tool-card" data-cat="dns" data-search="nextdns dns مشفّر وقابل للتخصيص بالكامل. يتيح بناء قوائم الحجب والتصفية الخاصة بك عبر جميع أجهزتك. encrypted, fully configurable dns. build your own blocklists and filtering across all your devices. dns filter parental control encrypted جميع الأجهزة all devices مزودو dns dns providers" style="--accent:#007BFF">
+        <div class="tools-box">
+          <div class="tools-grid">
+        <article class="tool-card" data-cat="dns" data-group="connectivity" data-search="NextDNS NextDNS DNS مشفّر وقابل للتخصيص بالكامل. يتيح بناء قوائم الحجب والتصفية الخاصة بك عبر جميع أجهزتك. Encrypted, fully configurable DNS. Build your own blocklists and filtering across all your devices. All devices All devices Free/paid Proprietary intermediate متوسط Intermediate مزودو DNS DNS providers">
           <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false"><use href="#brand-nextdns"></use></svg></div>
-            <div class="tool-title">
-              <h3>NextDNS</h3>
-              <div class="tool-os"><span class="tool-meta"><i class="fas fa-globe" aria-hidden="true"></i>All devices</span></div>
-            </div>
+            <span class="tool-icon" style="--accent:#007BFF;--accent-line:rgba(0,123,255,.32);--tile-bg:#007BFF;--tile-fg:#FFFFFF"><svg aria-hidden="true" focusable="false"><use href="#brand-nextdns"></use></svg></span>
+            <h3 class="tool-name">NextDNS</h3>
+            <a class="tool-open" href="https://nextdns.io/?from=358r3ctt" target="_blank" rel="sponsored noopener noreferrer" aria-label="NextDNS — Referral link" title="Referral link"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-2"><i class="fas fa-signal" aria-hidden="true"></i>Intermediate</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free/paid</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Proprietary</span>
-          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-2">Intermediate</span><span class="t-tag t-price">Free/paid</span><span class="t-tag t-source">Proprietary</span><span class="t-tag t-plat">All devices</span><span class="t-tag t-affil"><i class="fas fa-link" aria-hidden="true"></i>Affiliate</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
           <p class="tool-desc">Encrypted, fully configurable DNS. Build your own blocklists and filtering across all your devices.</p>
-          <div class="tool-foot">
-            <a class="tool-link affiliate" href="https://nextdns.io/?from=358r3ctt" target="_blank" rel="sponsored noopener noreferrer">
-              <i class="fas fa-link" aria-hidden="true"></i>
-              <span>Referral link</span>
-            </a>
-            <span class="tool-note">Supports the site</span>
-          </div>
         </article>
-        <article class="tool-card" data-cat="dns" data-search="adguard dns خادم مشفّر مع حجب إعلانات ومتتبعات مدمج، دون تثبيت برامج. حماية منخفضة الجهد على مستوى الشبكة. an encrypted resolver with ad and tracker blocking built in, no software to install — low-effort network-level protection. dns adblock encrypted resolver جميع الأجهزة all devices مزودو dns dns providers" style="--accent:#68BC71">
+        <article class="tool-card" data-cat="dns" data-group="connectivity" data-search="AdGuard DNS AdGuard DNS خادم مشفّر مع حجب إعلانات ومتتبعات مدمج، دون تثبيت برامج. حماية منخفضة الجهد على مستوى الشبكة. An encrypted resolver with ad and tracker blocking built in, no software to install — low-effort network-level protection. All devices All devices Free/paid Open source beginner مبتدئ Beginner مزودو DNS DNS providers">
           <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false"><use href="#brand-adguard"></use></svg></div>
-            <div class="tool-title">
-              <h3>AdGuard DNS</h3>
-              <div class="tool-os"><span class="tool-meta"><i class="fas fa-globe" aria-hidden="true"></i>All devices</span></div>
-            </div>
+            <span class="tool-icon" style="--accent:#68BC71;--accent-line:rgba(104,188,113,.32);--tile-bg:#68BC71;--tile-fg:#0B1121"><svg aria-hidden="true" focusable="false"><use href="#brand-adguard"></use></svg></span>
+            <h3 class="tool-name">AdGuard DNS</h3>
+            <a class="tool-open" href="https://adguard-dns.io/" target="_blank" rel="noopener noreferrer" aria-label="AdGuard DNS — Visit site" title="Visit site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-1"><i class="fas fa-signal" aria-hidden="true"></i>Beginner</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free/paid</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Open source</span>
-          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-1">Beginner</span><span class="t-tag t-price">Free/paid</span><span class="t-tag t-source">Open source</span><span class="t-tag t-plat">All devices</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
           <p class="tool-desc">An encrypted resolver with ad and tracker blocking built in, no software to install — low-effort network-level protection.</p>
-          <div class="tool-foot">
-            <a class="tool-link" href="https://adguard-dns.io/" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
-              <span>Visit site</span>
-            </a>
-            
-          </div>
         </article>
-        <article class="tool-card" data-cat="dns" data-search="quad9 خادم مشفّر مجاني يحترم الخصوصية مع حجب برامج ضارة مدمج، تديره مؤسسة غير ربحية سويسرية. a free, privacy-respecting encrypted resolver with malware blocking, run by a swiss non-profit. dns malware blocking non profit switzerland جميع الأجهزة all devices مزودو dns dns providers" style="--accent:#DC205E">
+        <article class="tool-card" data-cat="dns" data-group="connectivity" data-search="Quad9 Quad9 خادم مشفّر مجاني يحترم الخصوصية مع حجب برامج ضارة مدمج، تديره مؤسسة غير ربحية سويسرية. A free, privacy-respecting encrypted resolver with malware blocking, run by a Swiss non-profit. All devices All devices Free Open source beginner مبتدئ Beginner مزودو DNS DNS providers">
           <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false"><use href="#brand-quad9"></use></svg></div>
-            <div class="tool-title">
-              <h3>Quad9</h3>
-              <div class="tool-os"><span class="tool-meta"><i class="fas fa-globe" aria-hidden="true"></i>All devices</span></div>
-            </div>
+            <span class="tool-icon" style="--accent:#DC205E;--accent-line:rgba(220,32,94,.32);--tile-bg:#DC205E;--tile-fg:#FFFFFF"><svg aria-hidden="true" focusable="false"><use href="#brand-quad9"></use></svg></span>
+            <h3 class="tool-name">Quad9</h3>
+            <a class="tool-open" href="https://www.quad9.net/" target="_blank" rel="noopener noreferrer" aria-label="Quad9 — Visit site" title="Visit site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-1"><i class="fas fa-signal" aria-hidden="true"></i>Beginner</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Open source</span>
-          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-1">Beginner</span><span class="t-tag t-price">Free</span><span class="t-tag t-source">Open source</span><span class="t-tag t-plat">All devices</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
           <p class="tool-desc">A free, privacy-respecting encrypted resolver with malware blocking, run by a Swiss non-profit.</p>
-          <div class="tool-foot">
-            <a class="tool-link" href="https://www.quad9.net/" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
-              <span>Visit site</span>
-            </a>
-            
-          </div>
         </article>
+          </div>
         </div>
       </section>
-      <section class="tools-section" id="vpn" data-cat="vpn">
+      <section class="tools-section" id="vpn" data-cat="vpn" data-group="connectivity">
         <div class="tools-section-head">
           <h2><i class="fas fa-user-shield" aria-hidden="true"></i>VPN providers</h2>
-          <span class="section-count">2 tools</span>
-        </div>
-        <p>Useful for hiding your traffic from your ISP and changing your IP address.</p>
-        <div class="tools-grid">
-        <article class="tool-card" data-cat="vpn" data-search="protonvpn vpn موثوق ومفتوح المصدر من proton، مع طبقة مجانية سخية: بلا حدود بيانات وبلا إعلانات. a well-reviewed, open-source vpn from proton with a generous free tier: no data cap, no ads. vpn proton privacy no logs مزودو vpn vpn providers" style="--accent:#66DEB1">
-          <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false"><use href="#brand-protonvpn"></use></svg></div>
-            <div class="tool-title">
-              <h3>ProtonVPN</h3>
-              <div class="tool-os" aria-label="Windows, macOS, Linux, Android"><i class="fab fa-windows" title="Windows" aria-hidden="true"></i><i class="fab fa-apple" title="macOS" aria-hidden="true"></i><i class="fab fa-linux" title="Linux" aria-hidden="true"></i><i class="fab fa-android" title="Android" aria-hidden="true"></i></div>
-            </div>
-          </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-1"><i class="fas fa-signal" aria-hidden="true"></i>Beginner</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free/paid</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Open source</span>
-          </div>
-          <p class="tool-desc">A well-reviewed, open-source VPN from Proton with a generous free tier: no data cap, no ads.</p>
-          <div class="tool-foot">
-            <a class="tool-link" href="https://protonvpn.com/" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
-              <span>Official site</span>
-            </a>
-            
-          </div>
-        </article>
-        <article class="tool-card" data-cat="vpn" data-search="windscribe يقدّم طبقة مجانية سخية مع جدار حماية قابل للتكوين، وهو خيار قوي لمن يريد مرونة دون سعر مرتفع. a generous free tier with a configurable firewall — a strong pick if you want flexibility without a high price. vpn firewall free tier windscribe مزودو vpn vpn providers" style="--accent:#00ADEF">
-          <div class="tool-head">
-            <div class="tool-icon"><i class="fas fa-wind" aria-hidden="true"></i></div>
-            <div class="tool-title">
-              <h3>Windscribe</h3>
-              <div class="tool-os" aria-label="Windows, macOS, Linux, Android"><i class="fab fa-windows" title="Windows" aria-hidden="true"></i><i class="fab fa-apple" title="macOS" aria-hidden="true"></i><i class="fab fa-linux" title="Linux" aria-hidden="true"></i><i class="fab fa-android" title="Android" aria-hidden="true"></i></div>
-            </div>
-          </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-1"><i class="fas fa-signal" aria-hidden="true"></i>Beginner</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free/paid</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Open source</span>
-          </div>
-          <p class="tool-desc">A generous free tier with a configurable firewall — a strong pick if you want flexibility without a high price.</p>
-          <div class="tool-foot">
-            <a class="tool-link" href="https://windscribe.com/" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
-              <span>Official site</span>
-            </a>
-            
-          </div>
-        </article>
-        </div>
-      </section>
-      <section class="tools-section" id="messaging" data-cat="messaging">
-        <div class="tools-section-head">
-          <h2><i class="fas fa-comments" aria-hidden="true"></i>Messaging apps</h2>
+          <p>Useful for hiding your traffic from your ISP and changing your IP address.</p>
           <span class="section-count">3 tools</span>
         </div>
-        <p>A conversation is only as private as the app carrying it. These are the ones worth trusting.</p>
-        <div class="tools-grid">
-        <article class="tool-card" data-cat="messaging" data-search="signal أكثر تطبيقات المراسلة موثوقية: تشفير قوي، وواجهة سهلة، وتواصل عبر أسماء المستخدمين بدل رقم الهاتف. the most trusted messaging app around: strong encryption, a simple interface, and usernames instead of phone numbers. messaging encrypted chat signal private تطبيقات المراسلة messaging apps" style="--accent:#3B45FD">
+        <div class="tools-box">
+          <div class="tools-grid">
+        <article class="tool-card" data-cat="vpn" data-group="connectivity" data-search="ProtonVPN ProtonVPN VPN موثوق ومفتوح المصدر من Proton، مع طبقة مجانية سخية: بلا حدود بيانات وبلا إعلانات. A well-reviewed, open-source VPN from Proton with a generous free tier: no data cap, no ads. Windows macOS Linux Android Free/paid Open source beginner مبتدئ Beginner مزودو VPN VPN providers">
           <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false"><use href="#brand-signal"></use></svg></div>
-            <div class="tool-title">
-              <h3>Signal</h3>
-              <div class="tool-os" aria-label="Windows, macOS, Linux, Android"><i class="fab fa-windows" title="Windows" aria-hidden="true"></i><i class="fab fa-apple" title="macOS" aria-hidden="true"></i><i class="fab fa-linux" title="Linux" aria-hidden="true"></i><i class="fab fa-android" title="Android" aria-hidden="true"></i></div>
-            </div>
+            <span class="tool-icon" style="--accent:#66DEB1;--accent-line:rgba(102,222,177,.32);--tile-bg:#66DEB1;--tile-fg:#0B1121"><svg aria-hidden="true" focusable="false"><use href="#brand-protonvpn"></use></svg></span>
+            <h3 class="tool-name">ProtonVPN</h3>
+            <a class="tool-open" href="https://protonvpn.com/" target="_blank" rel="noopener noreferrer" aria-label="ProtonVPN — Official site" title="Official site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-1"><i class="fas fa-signal" aria-hidden="true"></i>Beginner</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Open source</span>
-          </div>
-          <p class="tool-desc">The most trusted messaging app around: strong encryption, a simple interface, and usernames instead of phone numbers.</p>
-          <div class="tool-foot">
-            <a class="tool-link" href="https://signal.org/" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-download" aria-hidden="true"></i>
-              <span>Download</span>
-            </a>
-            
-          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-1">Beginner</span><span class="t-tag t-price">Free/paid</span><span class="t-tag t-source">Open source</span><span class="t-tag t-plat" dir="ltr">Windows · macOS · Linux · Android</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
+          <p class="tool-desc">A well-reviewed, open-source VPN from Proton with a generous free tier: no data cap, no ads.</p>
         </article>
-        <article class="tool-card" data-cat="messaging" data-search="telegram تطبيق مرن وغني بالمميزات. ليس مشفّرًا من الطرف إلى الطرف افتراضيًا، لكنه الأفضل لإدارة المجتمعات ونقل الملفات الكبيرة. flexible and feature-rich. not end-to-end encrypted by default, but the best option for large communities and big file transfers. messaging chat channels communities telegram تطبيقات المراسلة messaging apps" style="--accent:#26A5E4">
+        <article class="tool-card" data-cat="vpn" data-group="connectivity" data-search="mullvad vpn anonymous cash audit no logs خصوصية مجهول تدقيق Mullvad VPN Mullvad VPN خدمة VPN قائمة على أرقام حسابات مجهولة ودفع نقدي، مع تدقيق منتظم وسياسة صريحة لعدم التسجيل. ليست مجانية، لكنها من أوضح الخيارات من حيث الشفافية. A VPN built around anonymous account numbers and cash payments, with regular audits and a clear no-logs policy. Not free, but one of the clearest options in terms of transparency. Windows macOS Linux Android iOS Paid Open source beginner مبتدئ Beginner مزودو VPN VPN providers">
           <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false"><use href="#brand-telegram"></use></svg></div>
-            <div class="tool-title">
-              <h3>Telegram</h3>
-              <div class="tool-os" aria-label="Windows, macOS, Linux, Android"><i class="fab fa-windows" title="Windows" aria-hidden="true"></i><i class="fab fa-apple" title="macOS" aria-hidden="true"></i><i class="fab fa-linux" title="Linux" aria-hidden="true"></i><i class="fab fa-android" title="Android" aria-hidden="true"></i></div>
-            </div>
+            <span class="tool-icon" style="--accent:#294D73;--accent-line:rgba(41,77,115,.32);--tile-bg:#294D73;--tile-fg:#FFFFFF"><svg aria-hidden="true" focusable="false"><use href="#brand-mullvad"></use></svg></span>
+            <h3 class="tool-name">Mullvad VPN</h3>
+            <a class="tool-open" href="https://mullvad.net/en/vpn" target="_blank" rel="noopener noreferrer" aria-label="Mullvad VPN — Official site" title="Official site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-1"><i class="fas fa-signal" aria-hidden="true"></i>Beginner</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free/paid</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Open source</span>
-          </div>
-          <p class="tool-desc">Flexible and feature-rich. Not end-to-end encrypted by default, but the best option for large communities and big file transfers.</p>
-          <div class="tool-foot">
-            <a class="tool-link" href="https://telegram.org/" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-download" aria-hidden="true"></i>
-              <span>Download</span>
-            </a>
-            
-          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-1">Beginner</span><span class="t-tag t-price">Paid</span><span class="t-tag t-source">Open source</span><span class="t-tag t-plat" dir="ltr">Windows · macOS · Linux · Android · iOS</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
+          <p class="tool-desc">A VPN built around anonymous account numbers and cash payments, with regular audits and a clear no-logs policy. Not free, but one of the clearest options in terms of transparency.</p>
         </article>
-        <article class="tool-card" data-cat="messaging" data-search="simplex مراسلة لامركزية لا تتطلب رقم هاتف أو بريدًا أو حتى اسم مستخدم دائم. الأنسب للمحادثات الحساسة. decentralised messaging that needs no phone number, email or permanent username. best for sensitive conversations. messaging decentralized anonymous no identifier simplex تطبيقات المراسلة messaging apps" style="--accent:#5B9DFF">
+        <article class="tool-card" data-cat="vpn" data-group="connectivity" data-search="Windscribe Windscribe يقدّم طبقة مجانية سخية مع جدار حماية قابل للتكوين، وهو خيار قوي لمن يريد مرونة دون سعر مرتفع. A generous free tier with a configurable firewall — a strong pick if you want flexibility without a high price. Windows macOS Linux Android Free/paid Open source beginner مبتدئ Beginner مزودو VPN VPN providers">
           <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false"><use href="#brand-simplex"></use></svg></div>
-            <div class="tool-title">
-              <h3>SimpleX</h3>
-              <div class="tool-os" aria-label="Windows, macOS, Linux, Android"><i class="fab fa-windows" title="Windows" aria-hidden="true"></i><i class="fab fa-apple" title="macOS" aria-hidden="true"></i><i class="fab fa-linux" title="Linux" aria-hidden="true"></i><i class="fab fa-android" title="Android" aria-hidden="true"></i></div>
-            </div>
+            <span class="tool-icon" style="--accent:#00ADEF;--accent-line:rgba(0,173,239,.32);--tile-bg:#00ADEF;--tile-fg:#0B1121"><i class="fas fa-wind" aria-hidden="true"></i></span>
+            <h3 class="tool-name">Windscribe</h3>
+            <a class="tool-open" href="https://windscribe.com/" target="_blank" rel="noopener noreferrer" aria-label="Windscribe — Official site" title="Official site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-3"><i class="fas fa-signal" aria-hidden="true"></i>Advanced</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Open source</span>
-          </div>
-          <p class="tool-desc">Decentralised messaging that needs no phone number, email or permanent username. Best for sensitive conversations.</p>
-          <div class="tool-foot">
-            <a class="tool-link" href="https://simplex.chat/" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-download" aria-hidden="true"></i>
-              <span>Download</span>
-            </a>
-            
-          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-1">Beginner</span><span class="t-tag t-price">Free/paid</span><span class="t-tag t-source">Open source</span><span class="t-tag t-plat" dir="ltr">Windows · macOS · Linux · Android</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
+          <p class="tool-desc">A generous free tier with a configurable firewall — a strong pick if you want flexibility without a high price.</p>
         </article>
+          </div>
         </div>
       </section>
-      <section class="tools-section" id="email" data-cat="email">
+      <section class="tools-section" id="messaging" data-cat="messaging" data-group="communication">
+        <div class="tools-section-head">
+          <h2><i class="fas fa-comments" aria-hidden="true"></i>Messaging apps</h2>
+          <p>A conversation is only as private as the app carrying it. These are the ones worth trusting.</p>
+          <span class="section-count">4 tools</span>
+        </div>
+        <div class="tools-box">
+          <div class="tools-grid">
+        <article class="tool-card" data-cat="messaging" data-group="communication" data-search="Signal Signal أكثر تطبيقات المراسلة موثوقية: تشفير قوي، وواجهة سهلة، وتواصل عبر أسماء المستخدمين بدل رقم الهاتف. The most trusted messaging app around: strong encryption, a simple interface, and usernames instead of phone numbers. Windows macOS Linux Android Free Open source beginner مبتدئ Beginner تطبيقات المراسلة Messaging apps">
+          <div class="tool-head">
+            <span class="tool-icon" style="--accent:#3B45FD;--accent-line:rgba(59,69,253,.32);--tile-bg:#3B45FD;--tile-fg:#FFFFFF"><svg aria-hidden="true" focusable="false"><use href="#brand-signal"></use></svg></span>
+            <h3 class="tool-name">Signal</h3>
+            <a class="tool-open" href="https://signal.org/" target="_blank" rel="noopener noreferrer" aria-label="Signal — Download" title="Download"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-1">Beginner</span><span class="t-tag t-price">Free</span><span class="t-tag t-source">Open source</span><span class="t-tag t-plat" dir="ltr">Windows · macOS · Linux · Android</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
+          <p class="tool-desc">The most trusted messaging app around: strong encryption, a simple interface, and usernames instead of phone numbers.</p>
+        </article>
+        <article class="tool-card" data-cat="messaging" data-group="communication" data-search="SimpleX SimpleX مراسلة لامركزية لا تتطلب رقم هاتف أو بريدًا أو حتى اسم مستخدم دائم. الأنسب للمحادثات الحساسة. Decentralised messaging that needs no phone number, email or permanent username. Best for sensitive conversations. Windows macOS Linux Android Free Open source advanced متقدم Advanced تطبيقات المراسلة Messaging apps">
+          <div class="tool-head">
+            <span class="tool-icon" style="--accent:#5B9DFF;--accent-line:rgba(91,157,255,.32);--tile-bg:#5B9DFF;--tile-fg:#0B1121"><svg aria-hidden="true" focusable="false"><use href="#brand-simplex"></use></svg></span>
+            <h3 class="tool-name">SimpleX</h3>
+            <a class="tool-open" href="https://simplex.chat/" target="_blank" rel="noopener noreferrer" aria-label="SimpleX — Download" title="Download"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-3">Advanced</span><span class="t-tag t-price">Free</span><span class="t-tag t-source">Open source</span><span class="t-tag t-plat" dir="ltr">Windows · macOS · Linux · Android</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
+          <p class="tool-desc">Decentralised messaging that needs no phone number, email or permanent username. Best for sensitive conversations.</p>
+        </article>
+        <article class="tool-card" data-cat="messaging" data-group="communication" data-search="element matrix decentralized federated e2ee encrypted chat مراسلة لامركزية مشفر Element Element عميل لبروتوكول Matrix، وهو بروتوكول مراسلة لامركزي مفتوح المصدر. يمنحك غرفًا مشفّرة من الطرف إلى الطرف وتحكمًا أكبر في بياناتك، لكنه يحتاج بعض الضبط. A client for Matrix, an open, decentralised messaging protocol. It gives you end-to-end encrypted rooms and more control over your data, at the cost of some setup. Windows macOS Linux Android iOS Free Open source intermediate متوسط Intermediate تطبيقات المراسلة Messaging apps">
+          <div class="tool-head">
+            <span class="tool-icon" style="--accent:#0DBD8B;--accent-line:rgba(13,189,139,.32);--tile-bg:#0DBD8B;--tile-fg:#0B1121"><svg aria-hidden="true" focusable="false"><use href="#brand-element"></use></svg></span>
+            <h3 class="tool-name">Element</h3>
+            <a class="tool-open" href="https://element.io/" target="_blank" rel="noopener noreferrer" aria-label="Element — Official site" title="Official site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-2">Intermediate</span><span class="t-tag t-price">Free</span><span class="t-tag t-source">Open source</span><span class="t-tag t-plat" dir="ltr">Windows · macOS · Linux · Android · iOS</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
+          <p class="tool-desc">A client for Matrix, an open, decentralised messaging protocol. It gives you end-to-end encrypted rooms and more control over your data, at the cost of some setup.</p>
+        </article>
+        <article class="tool-card" data-cat="messaging" data-group="communication" data-search="Telegram Telegram تطبيق مرن وغني بالمميزات. ليس مشفّرًا من الطرف إلى الطرف افتراضيًا، لكنه الأفضل لإدارة المجتمعات ونقل الملفات الكبيرة. Flexible and feature-rich. Not end-to-end encrypted by default, but the best option for large communities and big file transfers. Windows macOS Linux Android Free/paid Open source beginner مبتدئ Beginner تطبيقات المراسلة Messaging apps">
+          <div class="tool-head">
+            <span class="tool-icon" style="--accent:#26A5E4;--accent-line:rgba(38,165,228,.32);--tile-bg:#26A5E4;--tile-fg:#0B1121"><svg aria-hidden="true" focusable="false"><use href="#brand-telegram"></use></svg></span>
+            <h3 class="tool-name">Telegram</h3>
+            <a class="tool-open" href="https://telegram.org/" target="_blank" rel="noopener noreferrer" aria-label="Telegram — Download" title="Download"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-1">Beginner</span><span class="t-tag t-price">Free/paid</span><span class="t-tag t-source">Open source</span><span class="t-tag t-plat" dir="ltr">Windows · macOS · Linux · Android</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
+          <p class="tool-desc">Flexible and feature-rich. Not end-to-end encrypted by default, but the best option for large communities and big file transfers.</p>
+        </article>
+          </div>
+        </div>
+      </section>
+      <section class="tools-section" id="email" data-cat="email" data-group="communication">
         <div class="tools-section-head">
           <h2><i class="fas fa-envelope-open-text" aria-hidden="true"></i>Email & aliasing</h2>
+          <p>Use services without handing over your real address, which limits the damage when a site leaks data.</p>
           <span class="section-count">4 tools</span>
         </div>
-        <p>Use services without handing over your real address, which limits the damage when a site leaks data.</p>
-        <div class="tools-grid">
-        <article class="tool-card" data-cat="email" data-search="proton mail تشفير بوصول صفري وتشفير من الطرف إلى الطرف بين مستخدمي proton، وخوادم في سويسرا. zero-access encryption plus end-to-end encryption between proton users, with servers in switzerland. email encrypted proton switzerland web web البريد وإخفاء الهوية email &amp; aliasing" style="--accent:#6D4AFF">
+        <div class="tools-box">
+          <div class="tools-grid">
+        <article class="tool-card" data-cat="email" data-group="communication" data-search="Proton Mail Proton Mail تشفير بوصول صفري وتشفير من الطرف إلى الطرف بين مستخدمي Proton، وخوادم في سويسرا. Zero-access encryption plus end-to-end encryption between Proton users, with servers in Switzerland. Web Web Windows macOS Linux Android Free/paid Open source beginner مبتدئ Beginner البريد وإخفاء الهوية Email &amp; aliasing">
           <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false"><use href="#brand-protonmail"></use></svg></div>
-            <div class="tool-title">
-              <h3>Proton Mail</h3>
-              <div class="tool-os" aria-label="Windows, macOS, Linux, Android"><i class="fab fa-windows" title="Windows" aria-hidden="true"></i><i class="fab fa-apple" title="macOS" aria-hidden="true"></i><i class="fab fa-linux" title="Linux" aria-hidden="true"></i><i class="fab fa-android" title="Android" aria-hidden="true"></i><span class="tool-engine">Web</span></div>
-            </div>
+            <span class="tool-icon" style="--accent:#6D4AFF;--accent-line:rgba(109,74,255,.32);--tile-bg:#6D4AFF;--tile-fg:#FFFFFF"><svg aria-hidden="true" focusable="false"><use href="#brand-protonmail"></use></svg></span>
+            <h3 class="tool-name">Proton Mail</h3>
+            <a class="tool-open" href="https://pr.tn/ref/9MWY2K9S" target="_blank" rel="sponsored noopener noreferrer" aria-label="Proton Mail — Referral link" title="Referral link"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-1"><i class="fas fa-signal" aria-hidden="true"></i>Beginner</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free/paid</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Open source</span>
-          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-1">Beginner</span><span class="t-tag t-price">Free/paid</span><span class="t-tag t-source">Open source</span><span class="t-tag t-plat" dir="ltr">Windows · macOS · Linux · Android</span><span class="t-tag t-engine" dir="ltr">Web</span><span class="t-tag t-affil"><i class="fas fa-link" aria-hidden="true"></i>Affiliate</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
           <p class="tool-desc">Zero-access encryption plus end-to-end encryption between Proton users, with servers in Switzerland.</p>
-          <div class="tool-foot">
-            <a class="tool-link affiliate" href="https://pr.tn/ref/9MWY2K9S" target="_blank" rel="sponsored noopener noreferrer">
-              <i class="fas fa-link" aria-hidden="true"></i>
-              <span>Referral link</span>
-            </a>
-            <span class="tool-note">Supports the site</span>
-          </div>
         </article>
-        <article class="tool-card" data-cat="email" data-search="duckduckgo mail تنشئ عنوانًا منفصلًا لكل موقع، فيبقى بريدك الحقيقي خاصًا وينقطع التتبع الخفي عبر الإيميل. creates a separate address for every site, keeping your real inbox private and cutting hidden email tracking. email alias protection duckduckgo web web البريد وإخفاء الهوية email &amp; aliasing" style="--accent:#DE5833">
+        <article class="tool-card" data-cat="email" data-group="communication" data-search="DuckDuckGo Mail DuckDuckGo Mail تنشئ عنوانًا منفصلًا لكل موقع، فيبقى بريدك الحقيقي خاصًا وينقطع التتبع الخفي عبر الإيميل. Creates a separate address for every site, keeping your real inbox private and cutting hidden email tracking. Web Web Free Proprietary beginner مبتدئ Beginner البريد وإخفاء الهوية Email &amp; aliasing">
           <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false"><use href="#brand-duckduckgo"></use></svg></div>
-            <div class="tool-title">
-              <h3>DuckDuckGo Mail</h3>
-              <div class="tool-os"><span class="tool-meta"><i class="fas fa-globe" aria-hidden="true"></i>Web</span></div>
-            </div>
+            <span class="tool-icon" style="--accent:#DE5833;--accent-line:rgba(222,88,51,.32);--tile-bg:#DE5833;--tile-fg:#FFFFFF"><svg aria-hidden="true" focusable="false"><use href="#brand-duckduckgo"></use></svg></span>
+            <h3 class="tool-name">DuckDuckGo Mail</h3>
+            <a class="tool-open" href="https://duckduckgo.com/email" target="_blank" rel="noopener noreferrer" aria-label="DuckDuckGo Mail — Visit site" title="Visit site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-1"><i class="fas fa-signal" aria-hidden="true"></i>Beginner</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Proprietary</span>
-          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-1">Beginner</span><span class="t-tag t-price">Free</span><span class="t-tag t-source">Proprietary</span><span class="t-tag t-plat">Web</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
           <p class="tool-desc">Creates a separate address for every site, keeping your real inbox private and cutting hidden email tracking.</p>
-          <div class="tool-foot">
-            <a class="tool-link" href="https://duckduckgo.com/email" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
-              <span>Visit site</span>
-            </a>
-            
-          </div>
         </article>
-        <article class="tool-card" data-cat="email" data-search="proton pass (aliasing) مدير كلمات مرور مع خدمة إخفاء هوية مدعومة من simplelogin، وأكثر الطرق تكاملًا لإنشاء عناوين مؤقتة. a password manager with aliasing built in, powered by simplelogin — the most integrated way to create throwaway addresses. email alias simplelogin proton pass جميع الأنظمة all systems البريد وإخفاء الهوية email &amp; aliasing" style="--accent:#6D4AFF">
+        <article class="tool-card" data-cat="email" data-group="communication" data-search="Proton Pass (Aliasing) Proton Pass (Aliasing) مدير كلمات مرور مع خدمة إخفاء هوية مدعومة من SimpleLogin، وأكثر الطرق تكاملًا لإنشاء عناوين مؤقتة. A password manager with aliasing built in, powered by SimpleLogin — the most integrated way to create throwaway addresses. All systems All systems Free/paid Open source beginner مبتدئ Beginner البريد وإخفاء الهوية Email &amp; aliasing">
           <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><g fill="none"><g clip-path="url(#pp-SVG3M9xbd8S)"><path fill="url(#pp-SVG6eIjLcBa)" d="M10.826 4.548C13.336 2.036 14.592.78 16.04.31a6.34 6.34 0 0 1 3.92 0c1.448.47 2.703 1.726 5.214 4.238l6.278 6.278c2.512 2.51 3.767 3.766 4.238 5.214a6.34 6.34 0 0 1 0 3.92c-.47 1.447-1.726 2.703-4.238 5.214l-6.278 6.278c-2.51 2.512-3.766 3.767-5.214 4.238a6.34 6.34 0 0 1-3.92 0c-1.447-.47-2.703-1.726-5.214-4.238l-1.18-1.323c-.715-.8-1.072-1.201-1.327-1.657a4.8 4.8 0 0 1-.492-1.29c-.113-.509-.113-1.045-.113-2.118V10.936c0-1.073 0-1.609.113-2.118c.1-.452.266-.887.492-1.29c.255-.456.612-.856 1.326-1.657z"/><path fill="url(#pp-SVGpcEtXcma)" d="M10.826 4.548C13.336 2.036 14.592.78 16.04.31a6.34 6.34 0 0 1 3.92 0c1.448.47 2.703 1.726 5.214 4.238l6.278 6.278c2.512 2.51 3.767 3.766 4.238 5.214a6.34 6.34 0 0 1 0 3.92c-.47 1.447-1.726 2.703-4.238 5.214l-6.278 6.278c-2.51 2.512-3.766 3.767-5.214 4.238a6.34 6.34 0 0 1-3.92 0c-1.447-.47-2.703-1.726-5.214-4.238l-1.18-1.323c-.715-.8-1.072-1.201-1.327-1.657a4.8 4.8 0 0 1-.492-1.29c-.113-.509-.113-1.045-.113-2.118V10.936c0-1.073 0-1.609.113-2.118c.1-.452.266-.887.492-1.29c.255-.456.612-.856 1.326-1.657z"/><path fill="url(#pp-SVGEx5XEciR)" d="M10.377 4.996c1.256-1.256 1.884-1.884 2.608-2.119a3.17 3.17 0 0 1 1.96 0c.723.235 1.35.863 2.607 2.119l9.416 9.416c1.256 1.256 1.884 1.884 2.119 2.608a3.17 3.17 0 0 1 0 1.96c-.235.723-.863 1.351-2.119 2.607l-9.416 9.416c-1.256 1.256-1.884 1.884-2.608 2.12a3.17 3.17 0 0 1-1.96 0c-.723-.236-1.351-.864-2.607-2.12l-5.83-5.829C2.038 22.663.782 21.407.31 19.96a6.34 6.34 0 0 1 0-3.919c.47-1.448 1.726-2.704 4.238-5.215z"/></g><defs><radialGradient id="pp-SVG6eIjLcBa" cx="0" cy="0" r="1" gradientTransform="rotate(-58.142 38.442 8.58)scale(30.0512 46.9939)" gradientUnits="userSpaceOnUse"><stop stop-color="#ffd580"/><stop offset=".094" stop-color="#f6c592"/><stop offset=".205" stop-color="#ebb6a2"/><stop offset=".324" stop-color="#dfa5af"/><stop offset=".429" stop-color="#d397be"/><stop offset=".534" stop-color="#c486cb"/><stop offset=".649" stop-color="#b578d9"/><stop offset=".771" stop-color="#a166e5"/><stop offset=".891" stop-color="#8b57f2"/><stop offset="1" stop-color="#704cff"/></radialGradient><radialGradient id="pp-SVGEx5XEciR" cx="0" cy="0" r="1" gradientTransform="rotate(-58.142 33.83 9.124)scale(24.1716 37.7995)" gradientUnits="userSpaceOnUse"><stop stop-color="#ffd580"/><stop offset=".094" stop-color="#f6c592"/><stop offset=".205" stop-color="#ebb6a2"/><stop offset=".324" stop-color="#dfa5af"/><stop offset=".429" stop-color="#d397be"/><stop offset=".534" stop-color="#c486cb"/><stop offset=".649" stop-color="#b578d9"/><stop offset=".771" stop-color="#a166e5"/><stop offset=".891" stop-color="#8b57f2"/><stop offset="1" stop-color="#704cff"/></radialGradient><linearGradient id="pp-SVGpcEtXcma" x1="9.625" x2="16.626" y1="-7.148" y2="35.587" gradientUnits="userSpaceOnUse"><stop stop-color="#6d4aff"/><stop offset=".392" stop-color="#b39ffb" stop-opacity=".978"/><stop offset="1" stop-color="#ffe8db" stop-opacity=".8"/></linearGradient><clipPath id="pp-SVG3M9xbd8S"><path fill="#fff" d="M0 0h36v36H0z"/></clipPath></defs></g></svg></div>
-            <div class="tool-title">
-              <h3>Proton Pass (Aliasing)</h3>
-              <div class="tool-os"><span class="tool-meta"><i class="fas fa-globe" aria-hidden="true"></i>All systems</span></div>
-            </div>
+            <span class="tool-icon tool-icon--brand" style="--accent:#6D4AFF;--accent-line:rgba(109,74,255,.32);--tile-bg:#0B1121;--tile-fg:#fff"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><g fill="none"><g clip-path="url(#pp-SVG3M9xbd8S)"><path fill="url(#pp-SVG6eIjLcBa)" d="M10.826 4.548C13.336 2.036 14.592.78 16.04.31a6.34 6.34 0 0 1 3.92 0c1.448.47 2.703 1.726 5.214 4.238l6.278 6.278c2.512 2.51 3.767 3.766 4.238 5.214a6.34 6.34 0 0 1 0 3.92c-.47 1.447-1.726 2.703-4.238 5.214l-6.278 6.278c-2.51 2.512-3.766 3.767-5.214 4.238a6.34 6.34 0 0 1-3.92 0c-1.447-.47-2.703-1.726-5.214-4.238l-1.18-1.323c-.715-.8-1.072-1.201-1.327-1.657a4.8 4.8 0 0 1-.492-1.29c-.113-.509-.113-1.045-.113-2.118V10.936c0-1.073 0-1.609.113-2.118c.1-.452.266-.887.492-1.29c.255-.456.612-.856 1.326-1.657z"/><path fill="url(#pp-SVGpcEtXcma)" d="M10.826 4.548C13.336 2.036 14.592.78 16.04.31a6.34 6.34 0 0 1 3.92 0c1.448.47 2.703 1.726 5.214 4.238l6.278 6.278c2.512 2.51 3.767 3.766 4.238 5.214a6.34 6.34 0 0 1 0 3.92c-.47 1.447-1.726 2.703-4.238 5.214l-6.278 6.278c-2.51 2.512-3.766 3.767-5.214 4.238a6.34 6.34 0 0 1-3.92 0c-1.447-.47-2.703-1.726-5.214-4.238l-1.18-1.323c-.715-.8-1.072-1.201-1.327-1.657a4.8 4.8 0 0 1-.492-1.29c-.113-.509-.113-1.045-.113-2.118V10.936c0-1.073 0-1.609.113-2.118c.1-.452.266-.887.492-1.29c.255-.456.612-.856 1.326-1.657z"/><path fill="url(#pp-SVGEx5XEciR)" d="M10.377 4.996c1.256-1.256 1.884-1.884 2.608-2.119a3.17 3.17 0 0 1 1.96 0c.723.235 1.35.863 2.607 2.119l9.416 9.416c1.256 1.256 1.884 1.884 2.119 2.608a3.17 3.17 0 0 1 0 1.96c-.235.723-.863 1.351-2.119 2.607l-9.416 9.416c-1.256 1.256-1.884 1.884-2.608 2.12a3.17 3.17 0 0 1-1.96 0c-.723-.236-1.351-.864-2.607-2.12l-5.83-5.829C2.038 22.663.782 21.407.31 19.96a6.34 6.34 0 0 1 0-3.919c.47-1.448 1.726-2.704 4.238-5.215z"/></g><defs><radialGradient id="pp-SVG6eIjLcBa" cx="0" cy="0" r="1" gradientTransform="rotate(-58.142 38.442 8.58)scale(30.0512 46.9939)" gradientUnits="userSpaceOnUse"><stop stop-color="#ffd580"/><stop offset=".094" stop-color="#f6c592"/><stop offset=".205" stop-color="#ebb6a2"/><stop offset=".324" stop-color="#dfa5af"/><stop offset=".429" stop-color="#d397be"/><stop offset=".534" stop-color="#c486cb"/><stop offset=".649" stop-color="#b578d9"/><stop offset=".771" stop-color="#a166e5"/><stop offset=".891" stop-color="#8b57f2"/><stop offset="1" stop-color="#704cff"/></radialGradient><radialGradient id="pp-SVGEx5XEciR" cx="0" cy="0" r="1" gradientTransform="rotate(-58.142 33.83 9.124)scale(24.1716 37.7995)" gradientUnits="userSpaceOnUse"><stop stop-color="#ffd580"/><stop offset=".094" stop-color="#f6c592"/><stop offset=".205" stop-color="#ebb6a2"/><stop offset=".324" stop-color="#dfa5af"/><stop offset=".429" stop-color="#d397be"/><stop offset=".534" stop-color="#c486cb"/><stop offset=".649" stop-color="#b578d9"/><stop offset=".771" stop-color="#a166e5"/><stop offset=".891" stop-color="#8b57f2"/><stop offset="1" stop-color="#704cff"/></radialGradient><linearGradient id="pp-SVGpcEtXcma" x1="9.625" x2="16.626" y1="-7.148" y2="35.587" gradientUnits="userSpaceOnUse"><stop stop-color="#6d4aff"/><stop offset=".392" stop-color="#b39ffb" stop-opacity=".978"/><stop offset="1" stop-color="#ffe8db" stop-opacity=".8"/></linearGradient><clipPath id="pp-SVG3M9xbd8S"><path fill="#fff" d="M0 0h36v36H0z"/></clipPath></defs></g></svg></span>
+            <h3 class="tool-name">Proton Pass (Aliasing)</h3>
+            <a class="tool-open" href="https://pr.tn/ref/9MWY2K9S" target="_blank" rel="sponsored noopener noreferrer" aria-label="Proton Pass (Aliasing) — Referral link" title="Referral link"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-1"><i class="fas fa-signal" aria-hidden="true"></i>Beginner</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free/paid</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Open source</span>
-          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-1">Beginner</span><span class="t-tag t-price">Free/paid</span><span class="t-tag t-source">Open source</span><span class="t-tag t-plat">All systems</span><span class="t-tag t-affil"><i class="fas fa-link" aria-hidden="true"></i>Affiliate</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
           <p class="tool-desc">A password manager with aliasing built in, powered by SimpleLogin — the most integrated way to create throwaway addresses.</p>
-          <div class="tool-foot">
-            <a class="tool-link affiliate" href="https://pr.tn/ref/9MWY2K9S" target="_blank" rel="sponsored noopener noreferrer">
-              <i class="fas fa-link" aria-hidden="true"></i>
-              <span>Referral link</span>
-            </a>
-            <span class="tool-note">Supports the site</span>
-          </div>
         </article>
-        <article class="tool-card" data-cat="email" data-search="addy.io خدمة إخفاء هوية مفتوحة المصدر بطبقة مجانية سخية (أسماء مستعارة غير محدودة)، وبديل قوي لـ simplelogin. an open-source aliasing service with one of the most generous free tiers (unlimited aliases) — a strong simplelogin alternative. email alias anonaddy addy open source web · إضافة متصفح web · browser extension البريد وإخفاء الهوية email &amp; aliasing" style="--accent:#2D7AAE">
+        <article class="tool-card" data-cat="email" data-group="communication" data-search="addy.io addy.io خدمة إخفاء هوية مفتوحة المصدر بطبقة مجانية سخية (أسماء مستعارة غير محدودة)، وبديل قوي لـ SimpleLogin. An open-source aliasing service with one of the most generous free tiers (unlimited aliases) — a strong SimpleLogin alternative. Web · browser extension Web · browser extension Free/paid Open source beginner مبتدئ Beginner البريد وإخفاء الهوية Email &amp; aliasing">
           <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false"><use href="#brand-addy"></use></svg></div>
-            <div class="tool-title">
-              <h3>addy.io</h3>
-              <div class="tool-os"><span class="tool-meta"><i class="fas fa-globe" aria-hidden="true"></i>Web · browser extension</span></div>
-            </div>
+            <span class="tool-icon" style="--accent:#2D7AAE;--accent-line:rgba(45,122,174,.32);--tile-bg:#2D7AAE;--tile-fg:#FFFFFF"><svg aria-hidden="true" focusable="false"><use href="#brand-addy"></use></svg></span>
+            <h3 class="tool-name">addy.io</h3>
+            <a class="tool-open" href="https://addy.io/" target="_blank" rel="noopener noreferrer" aria-label="addy.io — Visit site" title="Visit site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-1"><i class="fas fa-signal" aria-hidden="true"></i>Beginner</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free/paid</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Open source</span>
-          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-1">Beginner</span><span class="t-tag t-price">Free/paid</span><span class="t-tag t-source">Open source</span><span class="t-tag t-plat">Web · browser extension</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
           <p class="tool-desc">An open-source aliasing service with one of the most generous free tiers (unlimited aliases) — a strong SimpleLogin alternative.</p>
-          <div class="tool-foot">
-            <a class="tool-link" href="https://addy.io/" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
-              <span>Visit site</span>
-            </a>
-            
-          </div>
         </article>
+          </div>
         </div>
       </section>
-      <section class="tools-section" id="passwords" data-cat="passwords">
+      <section class="tools-section" id="passwords" data-cat="passwords" data-group="accounts">
         <div class="tools-section-head">
           <h2><i class="fas fa-key" aria-hidden="true"></i>Passwords & 2FA</h2>
+          <p>Reusing passwords is the biggest security risk most people carry. Use a strong, trusted manager.</p>
           <span class="section-count">4 tools</span>
         </div>
-        <p>Reusing passwords is the biggest security risk most people carry. Use a strong, trusted manager.</p>
-        <div class="tools-grid">
-        <article class="tool-card" data-cat="passwords" data-search="bitwarden مدير كلمات مرور سحابي موثوق بتشفير بمعرفة صفرية: أنت وحدك تفتح الخزنة. ويدعم الاستضافة الذاتية. a trusted cloud password manager with zero-knowledge encryption: only you can open the vault. self-hosting is supported. password manager vault 2fa bitwarden جميع الأنظمة all systems كلمات المرور والمصادقة passwords &amp; 2fa" style="--accent:#175DDC">
+        <div class="tools-box">
+          <div class="tools-grid">
+        <article class="tool-card" data-cat="passwords" data-group="accounts" data-search="Bitwarden Bitwarden مدير كلمات مرور سحابي موثوق بتشفير بمعرفة صفرية: أنت وحدك تفتح الخزنة. ويدعم الاستضافة الذاتية. A trusted cloud password manager with zero-knowledge encryption: only you can open the vault. Self-hosting is supported. All systems All systems Free/paid Open source beginner مبتدئ Beginner كلمات المرور والمصادقة Passwords &amp; 2FA">
           <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false"><use href="#brand-bitwarden"></use></svg></div>
-            <div class="tool-title">
-              <h3>Bitwarden</h3>
-              <div class="tool-os"><span class="tool-meta"><i class="fas fa-window-maximize" aria-hidden="true"></i>All systems</span></div>
-            </div>
+            <span class="tool-icon" style="--accent:#175DDC;--accent-line:rgba(23,93,220,.32);--tile-bg:#175DDC;--tile-fg:#FFFFFF"><svg aria-hidden="true" focusable="false"><use href="#brand-bitwarden"></use></svg></span>
+            <h3 class="tool-name">Bitwarden</h3>
+            <a class="tool-open" href="https://bitwarden.com/" target="_blank" rel="noopener noreferrer" aria-label="Bitwarden — Visit site" title="Visit site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-1"><i class="fas fa-signal" aria-hidden="true"></i>Beginner</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free/paid</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Open source</span>
-          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-1">Beginner</span><span class="t-tag t-price">Free/paid</span><span class="t-tag t-source">Open source</span><span class="t-tag t-plat">All systems</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
           <p class="tool-desc">A trusted cloud password manager with zero-knowledge encryption: only you can open the vault. Self-hosting is supported.</p>
-          <div class="tool-foot">
-            <a class="tool-link" href="https://bitwarden.com/" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
-              <span>Visit site</span>
-            </a>
-            
-          </div>
         </article>
-        <article class="tool-card" data-cat="passwords" data-search="keepassxc مدير كلمات مرور محلي بالكامل: بياناتك في ملف مشفّر على جهازك فقط، دون اتصال إجباري بالسحابة. a fully local password manager: your data lives in an encrypted file on your own device, with no forced cloud sync. password manager offline local keepass local local كلمات المرور والمصادقة passwords &amp; 2fa" style="--accent:#6CAC4D">
+        <article class="tool-card" data-cat="passwords" data-group="accounts" data-search="KeePassXC KeePassXC مدير كلمات مرور محلي بالكامل: بياناتك في ملف مشفّر على جهازك فقط، دون اتصال إجباري بالسحابة. A fully local password manager: your data lives in an encrypted file on your own device, with no forced cloud sync. Local Local Windows macOS Linux Free Open source advanced متقدم Advanced كلمات المرور والمصادقة Passwords &amp; 2FA">
           <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false"><use href="#brand-keepassxc"></use></svg></div>
-            <div class="tool-title">
-              <h3>KeePassXC</h3>
-              <div class="tool-os" aria-label="Windows, macOS, Linux"><i class="fab fa-windows" title="Windows" aria-hidden="true"></i><i class="fab fa-apple" title="macOS" aria-hidden="true"></i><i class="fab fa-linux" title="Linux" aria-hidden="true"></i><span class="tool-engine">Local</span></div>
-            </div>
+            <span class="tool-icon" style="--accent:#6CAC4D;--accent-line:rgba(108,172,77,.32);--tile-bg:#6CAC4D;--tile-fg:#0B1121"><svg aria-hidden="true" focusable="false"><use href="#brand-keepassxc"></use></svg></span>
+            <h3 class="tool-name">KeePassXC</h3>
+            <a class="tool-open" href="https://keepassxc.org/" target="_blank" rel="noopener noreferrer" aria-label="KeePassXC — Visit site" title="Visit site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-3"><i class="fas fa-signal" aria-hidden="true"></i>Advanced</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Open source</span>
-          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-3">Advanced</span><span class="t-tag t-price">Free</span><span class="t-tag t-source">Open source</span><span class="t-tag t-plat" dir="ltr">Windows · macOS · Linux</span><span class="t-tag t-engine" dir="ltr">Local</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
           <p class="tool-desc">A fully local password manager: your data lives in an encrypted file on your own device, with no forced cloud sync.</p>
-          <div class="tool-foot">
-            <a class="tool-link" href="https://keepassxc.org/" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
-              <span>Visit site</span>
-            </a>
-            
-          </div>
         </article>
-        <article class="tool-card" data-cat="passwords" data-search="proton authenticator تطبيق مصادقة ثنائية مجاني ومفتوح المصدر من proton، يعمل على الجوال وسطح المكتب، ويدعم النسخ الاحتياطي المشفّر لرموزك. free, open-source two-factor authentication from proton, with mobile and desktop apps and encrypted backup of your codes. 2fa authenticator totp proton كلمات المرور والمصادقة passwords &amp; 2fa" style="--accent:#6D4AFF">
+        <article class="tool-card" data-cat="passwords" data-group="accounts" data-search="Proton Authenticator Proton Authenticator تطبيق مصادقة ثنائية مجاني ومفتوح المصدر من Proton، يعمل على الجوال وسطح المكتب، ويدعم النسخ الاحتياطي المشفّر لرموزك. Free, open-source two-factor authentication from Proton, with mobile and desktop apps and encrypted backup of your codes. Windows macOS Linux Android Free Open source beginner مبتدئ Beginner كلمات المرور والمصادقة Passwords &amp; 2FA">
           <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><g fill="none"><g clip-path="url(#pa-SVG3M9xbd8S)"><path fill="#e6e6e6" d="M21.148 16.364a3.15 3.15 0 0 1-1.815 2.848v2.242A1.33 1.33 0 0 1 18 22.784c-.738 0-1.33-.595-1.33-1.33v-2.242a3.145 3.145 0 1 1 4.477-2.848m5.721 5.404a9.7 9.7 0 0 0 .628-2.135a9.3 9.3 0 0 1-.628 2.135m.77-3.771q0 .162-.007.324a8 8 0 0 1-.071.873q.055-.442.068-.884a5 5 0 0 0 .01-.313"/><path fill="#fff" d="M22.185 4.185q-.001.115-.008.232q0 .058-.01.117c-.004.082-.015.16-.025.243q-.016.127-.043.25c0 .028-.01.053-.018.074a2 2 0 0 1-.053.214a3 3 0 0 1-.097.3c-.021.067-.05.131-.074.195a3 3 0 0 1-.153.32q-.061.114-.125.222a4.1 4.1 0 0 1-.724.888c-.071.064-.139.128-.214.185a4.2 4.2 0 0 1-.702.467h-.004a17.8 17.8 0 0 0-5.285-2.278a18.15 18.15 0 0 0-9.357.157q-.349.103-.691.214a16 16 0 0 1 1.026-1.059c.218-.206.435-.406.663-.595c.118-.103.235-.2.353-.3c.22-.181.449-.356.677-.523q.02-.014.036-.029c.125-.085.246-.178.367-.26a18 18 0 0 1 2.609-1.511c.257-.121.517-.232.78-.342q.205-.084.414-.164c.132-.054.267-.1.4-.15l.41-.14c.135-.045.274-.088.406-.131l.41-.118A18 18 0 0 1 14.82.282a15 15 0 0 1 .421-.068q1.263-.196 2.541-.21C17.857.004 17.93 0 18 0s.146.004.217.004a4.177 4.177 0 0 1 3.968 4.181"/><path fill="url(#pa-SVGd8T8bd5X)" fill-opacity=".73" d="M22.185 4.185q-.001.115-.008.232q0 .058-.01.117c-.004.082-.015.16-.025.243q-.016.127-.043.25c0 .028-.01.053-.018.074a2 2 0 0 1-.053.214a3 3 0 0 1-.097.3c-.021.067-.05.131-.074.195a3 3 0 0 1-.153.32q-.061.114-.125.222a4.1 4.1 0 0 1-.724.888c-.071.064-.139.128-.214.185a4.2 4.2 0 0 1-.702.467h-.004a17.8 17.8 0 0 0-5.285-2.278a18.15 18.15 0 0 0-9.357.157q-.349.103-.691.214a16 16 0 0 1 1.026-1.059c.218-.206.435-.406.663-.595c.118-.103.235-.2.353-.3c.22-.181.449-.356.677-.523q.02-.014.036-.029c.125-.085.246-.178.367-.26a18 18 0 0 1 2.609-1.511c.257-.121.517-.232.78-.342q.205-.084.414-.164c.132-.054.267-.1.4-.15l.41-.14c.135-.045.274-.088.406-.131l.41-.118A18 18 0 0 1 14.82.282a15 15 0 0 1 .421-.068q1.263-.196 2.541-.21C17.857.004 17.93 0 18 0s.146.004.217.004a4.177 4.177 0 0 1 3.968 4.181"/><path fill="#fff" d="M36 18v.218q-.014 1.279-.21 2.541q-.029.214-.068.42q-.148.84-.382 1.669c-.039.135-.074.274-.117.41l-.132.406c-.043.14-.093.274-.139.41c-.05.132-.096.267-.15.4q-.079.208-.164.413q-.16.395-.342.78a17.6 17.6 0 0 1-1.511 2.61q-.125.18-.26.366a.1.1 0 0 0-.025.036c-.171.225-.346.456-.528.677l-.296.353c-.192.228-.392.446-.598.663l-.346.357a17.9 17.9 0 0 1-7.065 4.362c4.21-4.683 5.532-11.042 3.967-16.77l-.003-.01q.01-.155.01-.314a4.18 4.18 0 0 1 4.182-4.181A4.176 4.176 0 0 1 36 17.783z"/><path fill="url(#pa-SVGW6qYKCcw)" fill-opacity=".5" d="M36 18v.218q-.014 1.279-.21 2.541q-.029.214-.068.42q-.148.84-.382 1.669c-.039.135-.074.274-.117.41l-.132.406c-.043.14-.093.274-.139.41c-.05.132-.096.267-.15.4q-.079.208-.164.413q-.16.395-.342.78a17.6 17.6 0 0 1-1.511 2.61q-.125.18-.26.366a.1.1 0 0 0-.025.036c-.171.225-.346.456-.528.677l-.296.353c-.192.228-.392.446-.598.663l-.346.357a17.9 17.9 0 0 1-7.065 4.362c4.21-4.683 5.532-11.042 3.967-16.77l-.003-.01q.01-.155.01-.314a4.18 4.18 0 0 1 4.182-4.181A4.176 4.176 0 0 1 36 17.783z"/><path fill="#6d4aff" d="M23.664 35.091c-6.256 2.064-13.416.61-18.392-4.362c-6.797-6.798-7.022-17.68-.67-24.744q.343-.112.691-.214q.35-.098.699-.185a18.06 18.06 0 0 1 10.483.588a17.8 17.8 0 0 1 3.46 1.718c-.07.04-.146.075-.22.11l-.225.09a4 4 0 0 1-.242.085a4.2 4.2 0 0 1-1.244.185a9.6 9.6 0 0 0-6.815 2.823c-3.76 3.764-3.764 9.863 0 13.627s9.866 3.76 13.626 0a9 9 0 0 0 .923-1.07c.09-.12.178-.249.268-.377a9 9 0 0 0 .47-.78q.112-.204.207-.407q.098-.203.185-.41a9.7 9.7 0 0 0 .692-2.574q.054-.442.067-.883l.004.01c1.565 5.728.242 12.087-3.967 16.77"/><path fill="url(#pa-SVGI2YgcRDn)" fill-opacity=".85" d="M23.664 35.091c-6.256 2.064-13.416.61-18.392-4.362c-6.797-6.798-7.022-17.68-.67-24.744q.343-.112.691-.214q.35-.098.699-.185a18.06 18.06 0 0 1 10.483.588a17.8 17.8 0 0 1 3.46 1.718c-.07.04-.146.075-.22.11l-.225.09a4 4 0 0 1-.242.085a4.2 4.2 0 0 1-1.244.185a9.6 9.6 0 0 0-6.815 2.823c-3.76 3.764-3.764 9.863 0 13.627s9.866 3.76 13.626 0a9 9 0 0 0 .923-1.07c.09-.12.178-.249.268-.377a9 9 0 0 0 .47-.78q.112-.204.207-.407q.098-.203.185-.41a9.7 9.7 0 0 0 .692-2.574q.054-.442.067-.883l.004.01c1.565 5.728.242 12.087-3.967 16.77"/><path fill="#be3232" d="M21.148 16.364a3.15 3.15 0 0 1-1.815 2.848v2.242A1.33 1.33 0 0 1 18 22.784c-.738 0-1.33-.595-1.33-1.33v-2.242a3.145 3.145 0 1 1 4.477-2.848"/><path fill="#8f69ff" d="M21.148 16.364a3.15 3.15 0 0 1-1.815 2.848v2.242A1.33 1.33 0 0 1 18 22.784c-.738 0-1.33-.595-1.33-1.33v-2.242a3.145 3.145 0 1 1 4.477-2.848"/></g><defs><linearGradient id="pa-SVGd8T8bd5X" x1="8.101" x2="23.182" y1=".749" y2="7.222" gradientUnits="userSpaceOnUse"><stop stop-color="#6d4aff"/><stop offset="1" stop-color="#6d4aff" stop-opacity=".5"/></linearGradient><linearGradient id="pa-SVGW6qYKCcw" x1="19.954" x2="29.955" y1="17.691" y2="38.414" gradientUnits="userSpaceOnUse"><stop offset=".476" stop-color="#6d4aff"/><stop offset=".731" stop-color="#e6ad32"/><stop offset=".903" stop-color="#f2fb00"/></linearGradient><radialGradient id="pa-SVGI2YgcRDn" cx="0" cy="0" r="1" gradientTransform="rotate(114.098 5.703 11.279)scale(29.9627 32.4746)" gradientUnits="userSpaceOnUse"><stop offset=".476" stop-color="#6d4aff"/><stop offset=".731" stop-color="#e6ad32"/><stop offset=".903" stop-color="#f2fb00"/></radialGradient><clipPath id="pa-SVG3M9xbd8S"><path fill="#fff" d="M0 0h36v36H0z"/></clipPath></defs></g></svg></div>
-            <div class="tool-title">
-              <h3>Proton Authenticator</h3>
-              <div class="tool-os" aria-label="Windows, macOS, Linux, Android"><i class="fab fa-windows" title="Windows" aria-hidden="true"></i><i class="fab fa-apple" title="macOS" aria-hidden="true"></i><i class="fab fa-linux" title="Linux" aria-hidden="true"></i><i class="fab fa-android" title="Android" aria-hidden="true"></i></div>
-            </div>
+            <span class="tool-icon tool-icon--brand" style="--accent:#6D4AFF;--accent-line:rgba(109,74,255,.32);--tile-bg:#0B1121;--tile-fg:#fff"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><g fill="none"><g clip-path="url(#pa-SVG3M9xbd8S)"><path fill="#e6e6e6" d="M21.148 16.364a3.15 3.15 0 0 1-1.815 2.848v2.242A1.33 1.33 0 0 1 18 22.784c-.738 0-1.33-.595-1.33-1.33v-2.242a3.145 3.145 0 1 1 4.477-2.848m5.721 5.404a9.7 9.7 0 0 0 .628-2.135a9.3 9.3 0 0 1-.628 2.135m.77-3.771q0 .162-.007.324a8 8 0 0 1-.071.873q.055-.442.068-.884a5 5 0 0 0 .01-.313"/><path fill="#fff" d="M22.185 4.185q-.001.115-.008.232q0 .058-.01.117c-.004.082-.015.16-.025.243q-.016.127-.043.25c0 .028-.01.053-.018.074a2 2 0 0 1-.053.214a3 3 0 0 1-.097.3c-.021.067-.05.131-.074.195a3 3 0 0 1-.153.32q-.061.114-.125.222a4.1 4.1 0 0 1-.724.888c-.071.064-.139.128-.214.185a4.2 4.2 0 0 1-.702.467h-.004a17.8 17.8 0 0 0-5.285-2.278a18.15 18.15 0 0 0-9.357.157q-.349.103-.691.214a16 16 0 0 1 1.026-1.059c.218-.206.435-.406.663-.595c.118-.103.235-.2.353-.3c.22-.181.449-.356.677-.523q.02-.014.036-.029c.125-.085.246-.178.367-.26a18 18 0 0 1 2.609-1.511c.257-.121.517-.232.78-.342q.205-.084.414-.164c.132-.054.267-.1.4-.15l.41-.14c.135-.045.274-.088.406-.131l.41-.118A18 18 0 0 1 14.82.282a15 15 0 0 1 .421-.068q1.263-.196 2.541-.21C17.857.004 17.93 0 18 0s.146.004.217.004a4.177 4.177 0 0 1 3.968 4.181"/><path fill="url(#pa-SVGd8T8bd5X)" fill-opacity=".73" d="M22.185 4.185q-.001.115-.008.232q0 .058-.01.117c-.004.082-.015.16-.025.243q-.016.127-.043.25c0 .028-.01.053-.018.074a2 2 0 0 1-.053.214a3 3 0 0 1-.097.3c-.021.067-.05.131-.074.195a3 3 0 0 1-.153.32q-.061.114-.125.222a4.1 4.1 0 0 1-.724.888c-.071.064-.139.128-.214.185a4.2 4.2 0 0 1-.702.467h-.004a17.8 17.8 0 0 0-5.285-2.278a18.15 18.15 0 0 0-9.357.157q-.349.103-.691.214a16 16 0 0 1 1.026-1.059c.218-.206.435-.406.663-.595c.118-.103.235-.2.353-.3c.22-.181.449-.356.677-.523q.02-.014.036-.029c.125-.085.246-.178.367-.26a18 18 0 0 1 2.609-1.511c.257-.121.517-.232.78-.342q.205-.084.414-.164c.132-.054.267-.1.4-.15l.41-.14c.135-.045.274-.088.406-.131l.41-.118A18 18 0 0 1 14.82.282a15 15 0 0 1 .421-.068q1.263-.196 2.541-.21C17.857.004 17.93 0 18 0s.146.004.217.004a4.177 4.177 0 0 1 3.968 4.181"/><path fill="#fff" d="M36 18v.218q-.014 1.279-.21 2.541q-.029.214-.068.42q-.148.84-.382 1.669c-.039.135-.074.274-.117.41l-.132.406c-.043.14-.093.274-.139.41c-.05.132-.096.267-.15.4q-.079.208-.164.413q-.16.395-.342.78a17.6 17.6 0 0 1-1.511 2.61q-.125.18-.26.366a.1.1 0 0 0-.025.036c-.171.225-.346.456-.528.677l-.296.353c-.192.228-.392.446-.598.663l-.346.357a17.9 17.9 0 0 1-7.065 4.362c4.21-4.683 5.532-11.042 3.967-16.77l-.003-.01q.01-.155.01-.314a4.18 4.18 0 0 1 4.182-4.181A4.176 4.176 0 0 1 36 17.783z"/><path fill="url(#pa-SVGW6qYKCcw)" fill-opacity=".5" d="M36 18v.218q-.014 1.279-.21 2.541q-.029.214-.068.42q-.148.84-.382 1.669c-.039.135-.074.274-.117.41l-.132.406c-.043.14-.093.274-.139.41c-.05.132-.096.267-.15.4q-.079.208-.164.413q-.16.395-.342.78a17.6 17.6 0 0 1-1.511 2.61q-.125.18-.26.366a.1.1 0 0 0-.025.036c-.171.225-.346.456-.528.677l-.296.353c-.192.228-.392.446-.598.663l-.346.357a17.9 17.9 0 0 1-7.065 4.362c4.21-4.683 5.532-11.042 3.967-16.77l-.003-.01q.01-.155.01-.314a4.18 4.18 0 0 1 4.182-4.181A4.176 4.176 0 0 1 36 17.783z"/><path fill="#6d4aff" d="M23.664 35.091c-6.256 2.064-13.416.61-18.392-4.362c-6.797-6.798-7.022-17.68-.67-24.744q.343-.112.691-.214q.35-.098.699-.185a18.06 18.06 0 0 1 10.483.588a17.8 17.8 0 0 1 3.46 1.718c-.07.04-.146.075-.22.11l-.225.09a4 4 0 0 1-.242.085a4.2 4.2 0 0 1-1.244.185a9.6 9.6 0 0 0-6.815 2.823c-3.76 3.764-3.764 9.863 0 13.627s9.866 3.76 13.626 0a9 9 0 0 0 .923-1.07c.09-.12.178-.249.268-.377a9 9 0 0 0 .47-.78q.112-.204.207-.407q.098-.203.185-.41a9.7 9.7 0 0 0 .692-2.574q.054-.442.067-.883l.004.01c1.565 5.728.242 12.087-3.967 16.77"/><path fill="url(#pa-SVGI2YgcRDn)" fill-opacity=".85" d="M23.664 35.091c-6.256 2.064-13.416.61-18.392-4.362c-6.797-6.798-7.022-17.68-.67-24.744q.343-.112.691-.214q.35-.098.699-.185a18.06 18.06 0 0 1 10.483.588a17.8 17.8 0 0 1 3.46 1.718c-.07.04-.146.075-.22.11l-.225.09a4 4 0 0 1-.242.085a4.2 4.2 0 0 1-1.244.185a9.6 9.6 0 0 0-6.815 2.823c-3.76 3.764-3.764 9.863 0 13.627s9.866 3.76 13.626 0a9 9 0 0 0 .923-1.07c.09-.12.178-.249.268-.377a9 9 0 0 0 .47-.78q.112-.204.207-.407q.098-.203.185-.41a9.7 9.7 0 0 0 .692-2.574q.054-.442.067-.883l.004.01c1.565 5.728.242 12.087-3.967 16.77"/><path fill="#be3232" d="M21.148 16.364a3.15 3.15 0 0 1-1.815 2.848v2.242A1.33 1.33 0 0 1 18 22.784c-.738 0-1.33-.595-1.33-1.33v-2.242a3.145 3.145 0 1 1 4.477-2.848"/><path fill="#8f69ff" d="M21.148 16.364a3.15 3.15 0 0 1-1.815 2.848v2.242A1.33 1.33 0 0 1 18 22.784c-.738 0-1.33-.595-1.33-1.33v-2.242a3.145 3.145 0 1 1 4.477-2.848"/></g><defs><linearGradient id="pa-SVGd8T8bd5X" x1="8.101" x2="23.182" y1=".749" y2="7.222" gradientUnits="userSpaceOnUse"><stop stop-color="#6d4aff"/><stop offset="1" stop-color="#6d4aff" stop-opacity=".5"/></linearGradient><linearGradient id="pa-SVGW6qYKCcw" x1="19.954" x2="29.955" y1="17.691" y2="38.414" gradientUnits="userSpaceOnUse"><stop offset=".476" stop-color="#6d4aff"/><stop offset=".731" stop-color="#e6ad32"/><stop offset=".903" stop-color="#f2fb00"/></linearGradient><radialGradient id="pa-SVGI2YgcRDn" cx="0" cy="0" r="1" gradientTransform="rotate(114.098 5.703 11.279)scale(29.9627 32.4746)" gradientUnits="userSpaceOnUse"><stop offset=".476" stop-color="#6d4aff"/><stop offset=".731" stop-color="#e6ad32"/><stop offset=".903" stop-color="#f2fb00"/></radialGradient><clipPath id="pa-SVG3M9xbd8S"><path fill="#fff" d="M0 0h36v36H0z"/></clipPath></defs></g></svg></span>
+            <h3 class="tool-name">Proton Authenticator</h3>
+            <a class="tool-open" href="https://proton.me/authenticator" target="_blank" rel="noopener noreferrer" aria-label="Proton Authenticator — Download" title="Download"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-1"><i class="fas fa-signal" aria-hidden="true"></i>Beginner</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Open source</span>
-          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-1">Beginner</span><span class="t-tag t-price">Free</span><span class="t-tag t-source">Open source</span><span class="t-tag t-plat" dir="ltr">Windows · macOS · Linux · Android</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
           <p class="tool-desc">Free, open-source two-factor authentication from Proton, with mobile and desktop apps and encrypted backup of your codes.</p>
-          <div class="tool-foot">
-            <a class="tool-link" href="https://proton.me/authenticator" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-download" aria-hidden="true"></i>
-              <span>Download</span>
-            </a>
-            
-          </div>
         </article>
-        <article class="tool-card" data-cat="passwords" data-search="2fas تطبيق مصادقة ثنائية ممتاز: لا يتطلب حسابًا، يعمل دون اتصال، ويدعم نسخًا احتياطيًا سحابيًا مشفّرًا. an excellent authenticator: no account required, works offline, and supports encrypted cloud backups. 2fa authenticator totp offline 2fas كلمات المرور والمصادقة passwords &amp; 2fa" style="--accent:#EC1C24">
+        <article class="tool-card" data-cat="passwords" data-group="accounts" data-search="2FAS 2FAS تطبيق مصادقة ثنائية ممتاز: لا يتطلب حسابًا، يعمل دون اتصال، ويدعم نسخًا احتياطيًا سحابيًا مشفّرًا. An excellent authenticator: no account required, works offline, and supports encrypted cloud backups. macOS Android Free Open source beginner مبتدئ Beginner كلمات المرور والمصادقة Passwords &amp; 2FA">
           <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false"><use href="#brand-2fas"></use></svg></div>
-            <div class="tool-title">
-              <h3>2FAS</h3>
-              <div class="tool-os" aria-label="macOS, Android"><i class="fab fa-apple" title="macOS" aria-hidden="true"></i><i class="fab fa-android" title="Android" aria-hidden="true"></i></div>
-            </div>
+            <span class="tool-icon" style="--accent:#EC1C24;--accent-line:rgba(236,28,36,.32);--tile-bg:#EC1C24;--tile-fg:#FFFFFF"><svg aria-hidden="true" focusable="false"><use href="#brand-2fas"></use></svg></span>
+            <h3 class="tool-name">2FAS</h3>
+            <a class="tool-open" href="https://2fas.com/" target="_blank" rel="noopener noreferrer" aria-label="2FAS — Download" title="Download"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-1"><i class="fas fa-signal" aria-hidden="true"></i>Beginner</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Open source</span>
-          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-1">Beginner</span><span class="t-tag t-price">Free</span><span class="t-tag t-source">Open source</span><span class="t-tag t-plat" dir="ltr">macOS · Android</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
           <p class="tool-desc">An excellent authenticator: no account required, works offline, and supports encrypted cloud backups.</p>
-          <div class="tool-foot">
-            <a class="tool-link" href="https://2fas.com/" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-download" aria-hidden="true"></i>
-              <span>Download</span>
-            </a>
-            
-          </div>
         </article>
+          </div>
         </div>
       </section>
-      <section class="tools-section" id="os" data-cat="os">
+      <section class="tools-section" id="os" data-cat="os" data-group="systems">
         <div class="tools-section-head">
           <h2><i class="fas fa-desktop" aria-hidden="true"></i>Desktop operating systems</h2>
+          <p>The operating system underneath everything else — these are the desktop options worth considering.</p>
           <span class="section-count">4 tools</span>
         </div>
-        <p>The operating system underneath everything else — these are the desktop options worth considering.</p>
-        <div class="tools-grid">
-        <article class="tool-card" data-cat="os" data-search="linux (distrochooser) إذا كنت مترددًا في اختيار توزيعة لينكس الأنسب لك، تطرح عليك هذه الأداة بضعة أسئلة وتقترح التوزيعة الأنسب لك. not sure which linux distribution fits you? this tool asks a few questions and suggests one. linux distro chooser quiz distribution web tool web tool أنظمة التشغيل desktop operating systems" style="--accent:#FCC624">
+        <div class="tools-box">
+          <div class="tools-grid">
+        <article class="tool-card" data-cat="os" data-group="systems" data-search="Linux (Distrochooser) Linux (Distrochooser) إذا كنت مترددًا في اختيار توزيعة لينكس الأنسب لك، تطرح عليك هذه الأداة بضعة أسئلة وتقترح التوزيعة الأنسب لك. Not sure which Linux distribution fits you? This tool asks a few questions and suggests one. Web Tool Web Tool Free Helper tool beginner مبتدئ Beginner أنظمة التشغيل Desktop operating systems">
           <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false"><use href="#brand-linux"></use></svg></div>
-            <div class="tool-title">
-              <h3>Linux (Distrochooser)</h3>
-              <div class="tool-os"><span class="tool-meta"><i class="fas fa-window-maximize" aria-hidden="true"></i>Web Tool</span></div>
-            </div>
+            <span class="tool-icon" style="--accent:#FCC624;--accent-line:rgba(252,198,36,.32);--tile-bg:#FCC624;--tile-fg:#0B1121"><svg aria-hidden="true" focusable="false"><use href="#brand-linux"></use></svg></span>
+            <h3 class="tool-name">Linux (Distrochooser)</h3>
+            <a class="tool-open" href="https://distrochooser.de/" target="_blank" rel="noopener noreferrer" aria-label="Linux (Distrochooser) — Try the tool" title="Try the tool"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-1"><i class="fas fa-signal" aria-hidden="true"></i>Beginner</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Helper tool</span>
-          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-1">Beginner</span><span class="t-tag t-price">Free</span><span class="t-tag t-source">Helper tool</span><span class="t-tag t-plat">Web Tool</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
           <p class="tool-desc">Not sure which Linux distribution fits you? This tool asks a few questions and suggests one.</p>
-          <div class="tool-foot">
-            <a class="tool-link" href="https://distrochooser.de/" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-flask" aria-hidden="true"></i>
-              <span>Try the tool</span>
-            </a>
-            
-          </div>
         </article>
-        <article class="tool-card" data-cat="os" data-search="ubuntu توزيعة لينكس الأكثر شهرة: تثبيت سهل، ومجتمع ضخم، وأول خطوة جيدة للانتقال من windows. the best-known linux distribution: easy installation, a huge community, and a good first step away from windows. linux ubuntu distribution desktop server desktop · server desktop · server أنظمة التشغيل desktop operating systems" style="--accent:#E95420">
+        <article class="tool-card" data-cat="os" data-group="systems" data-search="Ubuntu Ubuntu توزيعة لينكس الأكثر شهرة: تثبيت سهل، ومجتمع ضخم، وأول خطوة جيدة للانتقال من Windows. The best-known Linux distribution: easy installation, a huge community, and a good first step away from Windows. Desktop · Server Desktop · Server Free Open source beginner مبتدئ Beginner أنظمة التشغيل Desktop operating systems">
           <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false"><use href="#brand-ubuntu"></use></svg></div>
-            <div class="tool-title">
-              <h3>Ubuntu</h3>
-              <div class="tool-os"><span class="tool-meta"><i class="fas fa-window-maximize" aria-hidden="true"></i>Desktop · Server</span></div>
-            </div>
+            <span class="tool-icon" style="--accent:#E95420;--accent-line:rgba(233,84,32,.32);--tile-bg:#E95420;--tile-fg:#FFFFFF"><svg aria-hidden="true" focusable="false"><use href="#brand-ubuntu"></use></svg></span>
+            <h3 class="tool-name">Ubuntu</h3>
+            <a class="tool-open" href="https://ubuntu.com/" target="_blank" rel="noopener noreferrer" aria-label="Ubuntu — Official site" title="Official site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-1"><i class="fas fa-signal" aria-hidden="true"></i>Beginner</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Open source</span>
-          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-1">Beginner</span><span class="t-tag t-price">Free</span><span class="t-tag t-source">Open source</span><span class="t-tag t-plat">Desktop · Server</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
           <p class="tool-desc">The best-known Linux distribution: easy installation, a huge community, and a good first step away from Windows.</p>
-          <div class="tool-foot">
-            <a class="tool-link" href="https://ubuntu.com/" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
-              <span>Official site</span>
-            </a>
-            
-          </div>
         </article>
-        <article class="tool-card" data-cat="os" data-search="zorin os صُممت لتكون البديل الأسهل والأجمل لمستخدمي windows و macos، بواجهة مألوفة وأداء سريع. built as the easiest, most familiar alternative for windows and macos users, with a polished interface and fast performance. linux zorin desktop windows alternative desktop desktop أنظمة التشغيل desktop operating systems" style="--accent:#15A6F0">
+        <article class="tool-card" data-cat="os" data-group="systems" data-search="Zorin OS Zorin OS صُممت لتكون البديل الأسهل والأجمل لمستخدمي Windows و macOS، بواجهة مألوفة وأداء سريع. Built as the easiest, most familiar alternative for Windows and macOS users, with a polished interface and fast performance. Desktop Desktop Free/paid Open source beginner مبتدئ Beginner أنظمة التشغيل Desktop operating systems">
           <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false"><use href="#brand-zorin"></use></svg></div>
-            <div class="tool-title">
-              <h3>Zorin OS</h3>
-              <div class="tool-os"><span class="tool-meta"><i class="fas fa-window-maximize" aria-hidden="true"></i>Desktop</span></div>
-            </div>
+            <span class="tool-icon" style="--accent:#15A6F0;--accent-line:rgba(21,166,240,.32);--tile-bg:#15A6F0;--tile-fg:#0B1121"><svg aria-hidden="true" focusable="false"><use href="#brand-zorin"></use></svg></span>
+            <h3 class="tool-name">Zorin OS</h3>
+            <a class="tool-open" href="https://zorin.com/os/" target="_blank" rel="noopener noreferrer" aria-label="Zorin OS — Official site" title="Official site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-1"><i class="fas fa-signal" aria-hidden="true"></i>Beginner</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free/paid</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Open source</span>
-          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-1">Beginner</span><span class="t-tag t-price">Free/paid</span><span class="t-tag t-source">Open source</span><span class="t-tag t-plat">Desktop</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
           <p class="tool-desc">Built as the easiest, most familiar alternative for Windows and macOS users, with a polished interface and fast performance.</p>
-          <div class="tool-foot">
-            <a class="tool-link" href="https://zorin.com/os/" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
-              <span>Official site</span>
-            </a>
-            
-          </div>
         </article>
-        <article class="tool-card" data-cat="os" data-search="fedora توزيعة قوية مدعومة من red hat، تقدّم التقنيات الجديدة أولًا بأول مع الحفاظ على استقرار النظام. a strong, red hat-backed distribution that ships new technology early while keeping the system stable. linux fedora red hat workstation desktop · workstation desktop · workstation أنظمة التشغيل desktop operating systems" style="--accent:#51A2DA">
+        <article class="tool-card" data-cat="os" data-group="systems" data-search="Fedora Fedora توزيعة قوية مدعومة من Red Hat، تقدّم التقنيات الجديدة أولًا بأول مع الحفاظ على استقرار النظام. A strong, Red Hat-backed distribution that ships new technology early while keeping the system stable. Desktop · Workstation Desktop · Workstation Free Open source intermediate متوسط Intermediate أنظمة التشغيل Desktop operating systems">
           <div class="tool-head">
-            <div class="tool-icon"><svg aria-hidden="true" focusable="false"><use href="#brand-fedora"></use></svg></div>
-            <div class="tool-title">
-              <h3>Fedora</h3>
-              <div class="tool-os"><span class="tool-meta"><i class="fas fa-window-maximize" aria-hidden="true"></i>Desktop · Workstation</span></div>
-            </div>
+            <span class="tool-icon" style="--accent:#51A2DA;--accent-line:rgba(81,162,218,.32);--tile-bg:#51A2DA;--tile-fg:#0B1121"><svg aria-hidden="true" focusable="false"><use href="#brand-fedora"></use></svg></span>
+            <h3 class="tool-name">Fedora</h3>
+            <a class="tool-open" href="https://fedoraproject.org/" target="_blank" rel="noopener noreferrer" aria-label="Fedora — Official site" title="Official site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
-          <div class="tool-badges">
-            <span class="t-badge b-level-2"><i class="fas fa-signal" aria-hidden="true"></i>Intermediate</span>
-            <span class="t-badge b-price"><i class="fas fa-tag" aria-hidden="true"></i>Free</span>
-            <span class="t-badge b-source"><i class="fas fa-code" aria-hidden="true"></i>Open source</span>
-          </div>
+          <div class="tool-tags"><span class="t-tag t-level t-level-2">Intermediate</span><span class="t-tag t-price">Free</span><span class="t-tag t-source">Open source</span><span class="t-tag t-plat">Desktop · Workstation</span></div>
+          <span class="tool-rule" aria-hidden="true"></span>
           <p class="tool-desc">A strong, Red Hat-backed distribution that ships new technology early while keeping the system stable.</p>
-          <div class="tool-foot">
-            <a class="tool-link" href="https://fedoraproject.org/" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
-              <span>Official site</span>
-            </a>
-            
-          </div>
         </article>
+          </div>
         </div>
       </section>
+
         </div>
 
         <div class="tools-empty" id="toolsEmpty">
           <i class="fas fa-magnifying-glass" aria-hidden="true"></i>
-          <p><strong>No tool matches</strong><br>Try another word or clear the filters.</p>
+          <p><strong>No matching tools</strong><br>Try another word or clear the filters.</p>
           <button type="button" class="btn btn-outline" id="resetFilters"><i class="fas fa-rotate-left" aria-hidden="true"></i> Show all tools</button>
         </div>
 
-        <div class="tools-legend-block reveal">
+        <div class="tools-legend-block reveal" id="criteria">
           <h2 class="tools-legend-title"><i class="fas fa-circle-question" aria-hidden="true"></i>How to read these cards</h2>
-          <div class="tools-legend">
-            <div class="legend-item"><h3><i class="fas fa-gauge-simple-high" aria-hidden="true"></i>Difficulty</h3><p>Beginner, intermediate or advanced: how much setup the tool asks for, not how good it is.</p></div><div class="legend-item"><h3><i class="fas fa-tags" aria-hidden="true"></i>Price & licence</h3><p>Free, paid or a mixed model, with whether the source is open or proprietary.</p></div><div class="legend-item"><h3><i class="fas fa-link" aria-hidden="true"></i>Links</h3><p>Some links are referrals that support this site at no extra cost to you.</p></div>
-          </div>
+          <div class="tools-legend"><div class="legend-item"><h3><i class="fas fa-gauge-simple-high" aria-hidden="true"></i>Difficulty</h3><p>Beginner, intermediate or advanced: how much setup the tool asks for, not how good it is.</p></div><div class="legend-item"><h3><i class="fas fa-tags" aria-hidden="true"></i>Price & licence</h3><p>Free, paid or a mixed model, with whether the source is open or proprietary.</p></div><div class="legend-item"><h3><i class="fas fa-link" aria-hidden="true"></i>Links</h3><p>Some links are referrals that support this site at no extra cost to you.</p></div></div>
         </div>
 
         <div class="tools-disclosure">
@@ -1088,7 +760,7 @@
           <p>This list reflects my own preference and experience, not professional security advice. Technology moves quickly, and some links are referrals that support the site at no extra cost to you.</p>
         </div>
       </div>
-    </section>
+    </div>
   </main>
 
   <footer>
@@ -1097,9 +769,11 @@
     </div>
   </footer>
 
+  <button id="filterJump" class="filter-jump" aria-label="Back to filters"><i class="fas fa-sliders" aria-hidden="true"></i><span>Filters</span></button>
   <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
   <script>
+    const I18N = { total: 38, unit: 'tool', plural: 'tools', from: 'of', reset: 'Show all tools' };
     (function () {
       const root = document.documentElement;
       const toggle = document.getElementById('themeToggle');
@@ -1136,18 +810,30 @@
       window.addEventListener('scroll', () => { scrollBtn.style.display = window.scrollY > 300 ? 'block' : 'none'; }, { passive: true });
       scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-      /* ---------- filtering ---------- */
+      const filtersBlock = document.querySelector('.tools-filters');
+      const filterJump = document.getElementById('filterJump');
+      filterJump.addEventListener('click', () => {
+        const y = filtersBlock.getBoundingClientRect().top + window.scrollY - 100;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      });
+      new IntersectionObserver(([entry]) => {
+        filterJump.classList.toggle('is-visible', !entry.isIntersecting && window.scrollY > 200);
+      }, { rootMargin: '-100px 0px 0px 0px' }).observe(filtersBlock);
+
+      /* ---------- catalogue filtering ---------- */
       const input = document.getElementById('toolSearch');
       const wrap = document.getElementById('toolsSearchWrap');
       const clearBtn = document.getElementById('clearSearch');
       const countEl = document.getElementById('toolsCount');
       const emptyEl = document.getElementById('toolsEmpty');
       const resetBtn = document.getElementById('resetFilters');
-      const chips = [...document.querySelectorAll('.chip')];
+      const groupBtns = [...document.querySelectorAll('[data-group-filter]')];
+      const catBtns = [...document.querySelectorAll('[data-cat-filter]')];
       const cards = [...document.querySelectorAll('.tool-card')];
       const sections = [...document.querySelectorAll('.tools-section')];
-      const legendBlock = document.querySelector('.tools-legend-block');
       const total = cards.length;
+      const GROUP_OF = { browsers:'browsing',extensions:'browsing',search:'browsing',dns:'connectivity',vpn:'connectivity',messaging:'communication',email:'communication',passwords:'accounts',os:'systems' };
+      let activeGroup = 'all';
       let activeCat = 'all';
 
       const normalise = s => (s || '').toLowerCase()
@@ -1156,51 +842,113 @@
         .replace(/\s+/g, ' ').trim();
       cards.forEach(c => { c.dataset.haystack = normalise(c.dataset.search); });
 
-      function updateCount(shown) {
-        countEl.textContent = shown === total ? `${shown} tools` : `${shown} of ${total} tools`;
+      function countLabel(n) {
+        if ('plural' in I18N) return n === 1 ? `1 ${I18N.unit}` : `${n} ${I18N.plural}`;
+        return `${n} ${I18N.unit}`;
+      }
+
+      function setPressed(btns, isOn) {
+        btns.forEach(b => {
+          const on = isOn(b);
+          b.classList.toggle('is-active', on);
+          b.setAttribute('aria-pressed', String(on));
+        });
+      }
+
+      function syncCatRow() {
+        catBtns.forEach(b => {
+          const cat = b.dataset.catFilter;
+          b.hidden = activeGroup !== 'all' && GROUP_OF[cat] !== activeGroup;
+        });
       }
 
       function apply() {
         const q = normalise(input.value);
         wrap.classList.toggle('has-value', input.value.length > 0);
         let shown = 0;
-        cards.forEach(card => {
-          const okCat = activeCat === 'all' || card.dataset.cat === activeCat;
-          const okQ = !q || card.dataset.haystack.includes(q);
-          const show = okCat && okQ;
-          card.classList.toggle('is-hidden', !show);
-          if (show) shown++;
-        });
         sections.forEach(sec => {
-          const n = sec.querySelectorAll('.tool-card:not(.is-hidden)').length;
-          sec.classList.toggle('is-hidden', n === 0);
+          const cat = sec.dataset.cat;
+          const scopeOk = (activeGroup === 'all' || GROUP_OF[cat] === activeGroup)
+            && (activeCat === 'all' || cat === activeCat);
+          let visible = 0;
+          sec.querySelectorAll('.tool-card').forEach(card => {
+            const ok = scopeOk && (!q || card.dataset.haystack.includes(q));
+            card.hidden = !ok;
+            if (ok) visible++;
+          });
+          sec.hidden = visible === 0;
           const badge = sec.querySelector('.section-count');
-          if (badge) badge.textContent = n === 1 ? '1 tool' : n + ' tools';
+          if (badge) badge.textContent = countLabel(visible);
+          shown += visible;
         });
-        updateCount(shown);
+        countEl.textContent = `${shown} ${I18N.from} ${countLabel(total)}`;
+        countEl.hidden = shown === total && !q;
         emptyEl.classList.toggle('visible', shown === 0);
-        if (legendBlock) legendBlock.classList.toggle('is-hidden', shown === 0);
       }
 
-      chips.forEach(chip => chip.addEventListener('click', () => {
-        activeCat = chip.dataset.cat;
-        chips.forEach(c => c.setAttribute('aria-pressed', String(c === chip)));
+      function scrollToSection(cat) {
+        const sec = document.getElementById(cat);
+        if (!sec || sec.hidden) return;
+        const y = sec.getBoundingClientRect().top + window.scrollY - 88;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+
+      groupBtns.forEach(btn => btn.addEventListener('click', () => {
+        activeGroup = btn.dataset.groupFilter;
+        activeCat = 'all';
+        setPressed(groupBtns, b => b === btn);
+        setPressed(catBtns, () => false);
+        syncCatRow();
         apply();
+        const first = sections.find(s => activeGroup === 'all' || s.dataset.group === activeGroup);
+        if (first) scrollToSection(first.id);
       }));
-      input.addEventListener('input', apply);
+
+      catBtns.forEach(btn => btn.addEventListener('click', () => {
+        activeCat = btn.dataset.catFilter;
+        activeGroup = GROUP_OF[activeCat];
+        setPressed(catBtns, b => b === btn);
+        setPressed(groupBtns, b => b.dataset.groupFilter === activeGroup);
+        syncCatRow();
+        apply();
+        scrollToSection(activeCat);
+      }));
+
       clearBtn.addEventListener('click', () => { input.value = ''; apply(); input.focus(); });
       resetBtn.addEventListener('click', () => {
-        input.value = ''; activeCat = 'all';
-        chips.forEach(c => c.setAttribute('aria-pressed', String(c.dataset.cat === 'all')));
+        activeGroup = 'all';
+        activeCat = 'all';
+        input.value = '';
+        setPressed(groupBtns, b => b.dataset.groupFilter === 'all');
+        setPressed(catBtns, () => false);
+        syncCatRow();
         apply();
       });
-      document.addEventListener('keydown', ev => {
-        if (ev.key === '/' && document.activeElement !== input && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)) {
-          ev.preventDefault(); input.focus();
-        } else if (ev.key === 'Escape' && document.activeElement === input && input.value) {
-          input.value = ''; apply();
+
+      input.addEventListener('input', () => {
+        if (input.value && (activeGroup !== 'all' || activeCat !== 'all')) {
+          activeGroup = 'all';
+          activeCat = 'all';
+          setPressed(groupBtns, b => b.dataset.groupFilter === 'all');
+          setPressed(catBtns, () => false);
+          syncCatRow();
+        }
+        apply();
+      });
+      document.addEventListener('keydown', e => {
+        if (e.key === '/' && document.activeElement !== input && !/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName)) {
+          e.preventDefault();
+          input.focus({ preventScroll: true });
+          input.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        }
+        if (e.key === 'Escape' && document.activeElement === input) {
+          input.value = '';
+          apply();
+          input.blur();
         }
       });
+
+      syncCatRow();
       apply();
     })();
   </script>
